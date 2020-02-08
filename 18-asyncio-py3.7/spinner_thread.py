@@ -30,7 +30,7 @@ def supervisor():  # <9>
     done = threading.Event()
     spinner = threading.Thread(target=spin,
                                args=('thinking!', done))
-    breakpoint()
+    # breakpoint()
     print('spinner object:', spinner)  # <10>
     spinner.start()  # <11>
     result = slow_function()  # <12>
