@@ -9,10 +9,12 @@ git clone https://github.com/david68cu/pymiami_concurrency_talk_Feb_2020.git
 ####   https://www.pymiami.org , https://www.pythonsoftware.solutions
 ####   DO NOT RUN THIS EXERCISE AS IT COULD GENERATE A DoS attack 
 ####   Please reference the creators of this scripts as we did below 
+####   
 ####   Ramalho, Luciano           [see Reference section]
 ####   Quinlan, Brian             [see Reference section]
 ####   Raymond Hettinger         [see Reference section]
 ####   Mariatta, Andrew Svetlov  [see Reference section]
+#### 
 #### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
 ## A brief introduction to the state of concurrency in Python  and this Serie
@@ -56,7 +58,7 @@ A note to make a difference between  Parallelism and Concurrency
     - In the Fourth part of this serie, we will talk about Parallelims also know as Multiprocessing
 
 
-## I- First part: The Future is Now: Concurrency with Futures ~~~~~~~~~~~~~~~~~~~~~~~~~~
+## I- First part: The Future is Now: Concurrency with Futures 
 
 - Explain countries flag example: sequential download scripts ( flags.py)
 - Explain concurrency case using concurrent.futures package with class ThreadPoolExecutor(flags_threadpool.py)
@@ -92,7 +94,7 @@ CPU cores !!!
   - There is much more than we have seen here 
 
     
-## ~~~~~~~~~~~~~~~~~   Second part: As old as Dijkstra: Concurrency with Threads. ~~~~~~~~~~~~~
+## Second part: As old as Dijkstra: Concurrency with Threads. 
 
 Example 18.1 spinner_thread.py 
     
@@ -139,9 +141,9 @@ This is a simple case of Python pure Thread usage.But we should note the followi
      and keep the Thread example in 18-asyncio-py3.7 , spinner_thread.py and note that the solution will involve Queues
      and other threads mechanism.Note how easily thread programming get complicated 
      
-## ~~~~~~~~~~~~~~~~~   Third  part:  The big Revolution:  Async I/O ~~~~~~~~~~~~~
+## Third  part:  The big Revolution:  Async I/O 
 
-## ~~~~~~~~~~~~~~~~~   Four   part:  Blame DS and AI : Parallelism ~~~~~~~~~~~~~
+## Four   part:  Blame DS and AI : Parallelism 
     
 ### References
 
