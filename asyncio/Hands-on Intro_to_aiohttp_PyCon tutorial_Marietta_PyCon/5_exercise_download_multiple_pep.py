@@ -27,5 +27,6 @@ async def web_scrape_task(pep_number):
     downloaded_content = await download_pep(url)
     await write_to_file(pep_number, downloaded_content)
 
-
-asyncio.run(web_scrape_task(8010))
+for p in range(8010, 8017):
+    breakpoint()
+    asyncio.run(web_scrape_task(p))
