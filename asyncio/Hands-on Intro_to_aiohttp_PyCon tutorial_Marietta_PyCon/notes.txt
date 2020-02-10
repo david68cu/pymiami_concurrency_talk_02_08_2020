@@ -1,0 +1,5 @@
+ #Very good presentation as intriductoion to Async I/O
+
+ - [Mariatta, Andrew Svetlov - Hands-on Intro to aiohttp - PyCon 2019]
+   https://www.youtube.com/watch?v=OxzVApXKWYM
+   https://us-pycon-2019-tutorial.readthedocs.io/asyncio_intro.html
