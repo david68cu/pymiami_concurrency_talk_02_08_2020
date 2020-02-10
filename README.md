@@ -145,12 +145,12 @@ This is a simple case of Python pure Thread usage.But we should note the followi
 
 - INTRODUCTION
 - Talk about  Guido , Marietta and Miguel work for Python 
-- Ask teh class to folow them in twitter so they could see how they think and behave and what they do and have done
+- Ask the class to folow them in twitter so they could see how they think and behave and what they do and have done
 - Compare Flask Course form Miguel 
 - Talk about O'reilly Hur Flask course
 - Note that Python is free
 - CLASS DETAILS
-- Quickly review with teh class Pycon 2017 Miguel Grinberg Asynchronous Python for the Complete Beginner PyCon 2017
+- Quickly review with the class Pycon 2017 Miguel Grinberg Asynchronous Python for the Complete Beginner PyCon 2017
 - Go into  Mariatta Talk in PyCon 2019
 
 
