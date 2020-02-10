@@ -17,6 +17,7 @@ def spin(msg, done):  # <1>
         status = char + ' ' + msg
         print(status, flush=True, end='\r')
         if done.wait(.1):  # <5>
+
             break
     print(' ' * len(status), end='\r')
 

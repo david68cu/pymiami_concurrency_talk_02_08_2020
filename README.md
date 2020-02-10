@@ -1,9 +1,6 @@
 # PyMiami Concurrency Talk
 
-
-Please clone the repo to follow up with this talk
 git clone https://github.com/david68cu/pymiami_concurrency_talk_Feb_2020.git
-
 
 
 #### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -11,18 +8,23 @@ git clone https://github.com/david68cu/pymiami_concurrency_talk_Feb_2020.git
 ####   david@pythonsoftware.solutions , david@pymiami.org
 ####   https://www.pymiami.org , https://www.pythonsoftware.solutions
 ####   DO NOT RUN THIS EXERCISE AS IT COULD GENERATE A DoS attack 
+####   Please reference the creators of this scripts as we did below 
+####   Ramalho, Luciano           [see Reference section]
+####   Quinlan, Brian             [see Reference section]
+####   Raymond Hettinger         [see Reference section]
+####   Mariatta, Andrew Svetlov  [see Reference section]
 #### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
-### A brief introduction to the state of concurrency in Python  and this Serie
+## A brief introduction to the state of concurrency in Python  and this Serie
 
     In order to review  the state of Concurrency and Paralellism in Python, we will have 4 talks
     
-    - First part:  Concurrency with Futures.
-    - Second part: Concurrency with Threads.
-    - Third part:  Concurrency with Async I/O.
-    - Fourth part: Parallelism.
+    - First part:  The Future is Now.  Concurrency with Futures.
+    - Second part: As old as Dijkstra. Concurrency with Threads.
+    - Third part:  The big Revolution. Async I/OConcurrency with Async I/O.
+    - Fourth part: Blame DS and AI :   Parallelism
  
-####    A little history and terminology about Concurrency in Python
+   SOME HISTORY AND TERMS USED IN CONCURRENCY PROGRAMMING
        
         PYTHON THREADS ARE GREAT AT DOING NOTHING" , David Beazley
 
@@ -54,24 +56,17 @@ A note to make a difference between  Parallelism and Concurrency
     - In the Fourth part of this serie, we will talk about Parallelims also know as Multiprocessing
 
 
+## I- First part: The Future is Now: Concurrency with Futures ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
-#### ~~~~~~~~~~~ First part: Concurrency with Futures ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-- Explain different kind of concurrency in Python: Threads (Threads, current.futures.ThreadPoolExecutor, Async I/O),
- Multiprocessing
-- Explain Thread with more details and its features
 - Explain countries flag example: sequential download scripts ( flags.py)
 - Explain concurrency case using concurrent.futures package with class ThreadPoolExecutor(flags_threadpool.py)
   - Follow the class to see the concurrent.future library in 
     https://github.com/python/cpython/blob/3.8/Lib/concurrent/futures/__init__.py
     https://github.com/python/cpython/blob/3.8/Lib/concurrent/futures/thread.py
     https://github.com/python/cpython/blob/3.8/Lib/concurrent/futures/_base.py
-       Make them observe teh Context manager __enter__ __exit__ in ThreadPoolExecutor class declaration
+       Make them observe the Context manager __enter__ __exit__ in ThreadPoolExecutor class declaration
 - Explain the benefits of these High Level Interfaces that owns a pool of worker threads or processes and 
-   also a Queue for the tasks, but we do not need to know about this
+   also a Queue for the tasks, but we do not need to know about this !!!
 - But what is future, we just saw a mapping?
 - A feature is a deferred execution and we see that only on
 - Indeed with res = executor.map(download_one, sorted(cc_list))  # <6> we don't use any deferred excution
@@ -81,7 +76,7 @@ A note to make a difference between  Parallelism and Concurrency
 
 - In no one  of the two concurrent  examples that we have seen so far we are able to perform download in paralell.
 That is limited by the GIL. We do have multi thread but juts one thread at the time is executing
-- So concurrent.futures are limited by teh GIL. It is because teh CPython interpreter is not Thread safe , so it has the 
+- So concurrent.futures are limited by the GIL. It is because the CPython interpreter is not Thread safe , so it has the 
 GIL "Global Interpreter Lock" which allow only one thread at eh time to be executed
 - When we write Python doe , we have no control over the GIL , but a build-in function or an extension in C 
 can release the GIL
@@ -90,19 +85,14 @@ CPU cores !!!
 - This complicates the code of the library considerably and most library authors' do not do it!!
 - If futures.ThreadPoolExecutor is not flexible enough for what we want ,  we ca build our own solution out of thread 
   components modules : Threads, Semaphores, and thread safe Queues. 
+  
+  In brief:
+  -Futures offers less flexibility than traditional threads , however it encapsulate a lot of functionality
+  that can help us solve some of our tasks without the complexity presented by traditional threads
+  - There is much more than we have seen here 
 
     
-## References
-
-## Examples where taken from 
-
--  Ramalho, Luciano. Fluent Python: Clear, Concise, and Effective Programming. Chapter 17th Concurrency with Future
--  Quinlan, Brian: The Future is soon! (https://pyvideo.org/pycon-au-2010/pyconau-2010--the-future-is-soon.html) 
-    at PyCon Australia 2010 (INTRODUCTION OF PEP 3148)
--  Raymond Hettinger, Keynote on Concurrency, PyBay 2017(https://www.youtube.com/watch?v=9zinZmE3Ogk)
-
-
-#### Second part:  Concurrency with Threads.
+## ~~~~~~~~~~~~~~~~~   Second part: As old as Dijkstra: Concurrency with Threads. ~~~~~~~~~~~~~
 
 Example 18.1 spinner_thread.py 
     
@@ -118,14 +108,15 @@ Example 18.1 spinner_thread.py
     - Spin breaks out of the infinite cycle created by itertools
     - . spinner.join() Before returning result , the main loop stops and awaiting for spiner threads finishes.
     - result is returned and we print the Answer
+    
+    The solution use a Class Signal to replace a Thread.Event(). Our example here uses Thread Event
 
-This is a simple case of Python pure Thread usage.But we should note teh following
+This is a simple case of Python pure Thread usage.But we should note the following
 
-    - We had to use an external class Signal to stop the Threads from outside
     - As concurrent.future, we are using Threads ( :-) )
-    - if we need to wait for teh secondary Thread to finish we had to use a join() method on that thread
+    - if we need to wait for the secondary Thread to finish we had to use a join() method on that thread
     - Threat are created, but they do not start until we invoque spinner.start()
-    - We ca pass arguments to the function that runs in teh secondary thread:
+    - We can pass arguments to the function that runs in the secondary thread:
     ```python
         spinner = threading.Thread(target=spin,
                                args=('thinking!', done))
@@ -147,6 +138,19 @@ This is a simple case of Python pure Thread usage.But we should note teh followi
     - Do not go the solution of this exercise .It will take too much time. Just note the race condition , why it occurred
      and keep the Thread example in 18-asyncio-py3.7 , spinner_thread.py and note that the solution will involve Queues
      and other threads mechanism.Note how easily thread programming get complicated 
+     
+## ~~~~~~~~~~~~~~~~~   Third  part:  The big Revolution:  Async I/O ~~~~~~~~~~~~~
+
+## ~~~~~~~~~~~~~~~~~   Four   part:  Blame DS and AI : Parallelism ~~~~~~~~~~~~~
     
-    
+### References
+
+-  Ramalho, Luciano. Fluent Python: Clear, Concise, and Effective Programming. Chapter 17th Concurrency with Future
+-  Quinlan, Brian: The Future is soon! (https://pyvideo.org/pycon-au-2010/pyconau-2010--the-future-is-soon.html) 
+    at PyCon Australia 2010 (INTRODUCTION OF PEP 3148)
+-  Raymond Hettinger, Keynote on Concurrency, PyBay 2017(https://www.youtube.com/watch?v=9zinZmE3Ogk)
+-  Disassembled code created by David Gutierrez 
+-  Mariatta, Andrew Svetlov - Hands-on Intro to aiohttp - PyCon 2019
+   https://www.youtube.com/watch?v=OxzVApXKWYM
+   https://us-pycon-2019-tutorial.readthedocs.io/asyncio_intro.html  
 
