@@ -143,6 +143,17 @@ This is a simple case of Python pure Thread usage.But we should note the followi
      
 ## Third  part:  The big Revolution:  Async I/O 
 
+- INTRODUCTION
+- Talk about  Guido , Marietta and Miguel work for Python 
+- Ask teh class to folow them in twitter so they could see how they think and behave and what they do and have done
+- Compare Flask Course form Miguel 
+- Talk about O'reilly Hur Flask course
+- Note that Python is free
+- CLASS DETAILS
+- Quickly review with teh class Pycon 2017 Miguel Grinberg Asynchronous Python for the Complete Beginner PyCon 2017
+- Go into  Mariatta Talk in PyCon 2019
+
+
 ## Four   part:  Blame DS and AI : Parallelism 
     
 ### References
@@ -155,4 +166,6 @@ This is a simple case of Python pure Thread usage.But we should note the followi
 -  Mariatta, Andrew Svetlov - Hands-on Intro to aiohttp - PyCon 2019
    https://www.youtube.com/watch?v=OxzVApXKWYM
    https://us-pycon-2019-tutorial.readthedocs.io/asyncio_intro.html  
+-  Miguel Grinberg Asynchronous Python for the Complete Beginner PyCon 2017
+   https://www.youtube.com/watch?v=iG6fr81xHKA
 
