@@ -13,6 +13,7 @@ git clone https://github.com/david68cu/pymiami_concurrency_talk_Feb_2020.git
          Ramalho, Luciano           [see Reference section]
          Quinlan, Brian             [see Reference section]
          Raymond Hettinger          [see Reference section]
+         Miguel Grinberg            [see Reference section]
          Mariatta, Andrew Svetlov   [see Reference section]
 ######
 ######
