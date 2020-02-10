@@ -3,18 +3,19 @@
 git clone https://github.com/david68cu/pymiami_concurrency_talk_Feb_2020.git
 
 
-#### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-####   CREATED BY DAVID GUTIERREZ FOR PYMIAMI TALK FEB 2020 FIU 
-####   david@pythonsoftware.solutions , david@pymiami.org
-####   https://www.pymiami.org , https://www.pythonsoftware.solutions
-####   DO NOT RUN THIS EXERCISE AS IT COULD GENERATE A DoS attack 
-####   Please reference the creators of this scripts as we did below 
-####   
-####   Ramalho, Luciano           [see Reference section]
-####   Quinlan, Brian             [see Reference section]
-####   Raymond Hettinger         [see Reference section]
-####   Mariatta, Andrew Svetlov  [see Reference section]
-#### 
+##### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#####   CREATED BY DAVID GUTIERREZ FOR PYMIAMI TALK FEB 2020 FIU 
+#####   david@pythonsoftware.solutions , david@pymiami.org
+#####   https://www.pymiami.org , https://www.pythonsoftware.solutions
+#####   DO NOT RUN THIS EXERCISE AS IT COULD GENERATE A DoS attack 
+#####   Please reference the creators of this scripts as we did below 
+#####   
+         Ramalho, Luciano           [see Reference section]
+         Quinlan, Brian             [see Reference section]
+         Raymond Hettinger          [see Reference section]
+         Mariatta, Andrew Svetlov   [see Reference section]
+######
+######
 #### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
 ## A brief introduction to the state of concurrency in Python  and this Serie
@@ -23,7 +24,7 @@ git clone https://github.com/david68cu/pymiami_concurrency_talk_Feb_2020.git
     
     - First part:  The Future is Now.  Concurrency with Futures.
     - Second part: As old as Dijkstra. Concurrency with Threads.
-    - Third part:  The big Revolution. Async I/OConcurrency with Async I/O.
+    - Third part:  The big Revolution. Async I/O. Concurrency with Python asyncio.
     - Fourth part: Blame DS and AI :   Parallelism
  
    SOME HISTORY AND TERMS USED IN CONCURRENCY PROGRAMMING
