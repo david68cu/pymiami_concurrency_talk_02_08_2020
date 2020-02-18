@@ -5,7 +5,7 @@
   <p> Joint our group social accounts </p>
 
 
-  <table>
+  <table border="0">
   <tr>
       <td>  
           <a href="https://twitter.com/Py_Miami">
