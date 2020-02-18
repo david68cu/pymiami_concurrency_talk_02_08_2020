@@ -1,30 +1,48 @@
 # PyMiami Concurrency Talk
 
-git clone https://github.com/david68cu/pymiami_concurrency_talk_02082020
+##   Created by David Gutierrez for PyMiami
 
-https://github.com/david68cu/pymiami_concurrency_talk_02082020
+   Join our Twitter group at : https://twitter.com/Py_Miami
+   Join our Facebook group at : https://www.facebook.com/groups/pymiami/
+   <p align="center">
+      <img src="Twitter_Logo_Blue.png" width="350" title="Twitter Logo" alt="Twitter Logo">
+      <a href="https://twitter.com/Py_Miami"> @Py_Miami</a>
+  </p>
+  
+   PyMiami 
+     emails: david@pymiami.org
+     https://www.pymiami.org
+     
+   For Professional Services, Training and Software Creation contact us @:  
+     emails: david@pythonsoftware.solutions 
+     https://www.pythonsoftware.solutions
+          
 
-##### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#####   Created by David Gutierrez for PyMiami.
-#####   Talk #1 - Feb 8th 2020 
-#####   Talk #2 - March 14th 2020 
-#####   emails: david@pythonsoftware.solutions , david@pymiami.org
-#####   https://www.pymiami.org , https://www.pythonsoftware.solutions
-#####   DO NOT RUN THIS EXERCISE AS IT COULD GENERATE A DoS attack 
-#####   Please reference the creators of this scripts as we did below 
-#####   
-         Ramalho, Luciano           [see Reference section]
-         Quinlan, Brian             [see Reference section]
-         Raymond Hettinger          [see Reference section]
-         Miguel Grinberg            [see Reference section]
-         Mariatta Wijaya            [see Reference section]
-         Andrew Svetlov             [see Reference section]
-######
-######   This is the job of those mentioned  above.Follow them in Twitter 
-######   Look for their course, books, training, courses and talks
-#### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+##   Created by David Gutierrez for 
+        - Talk #1 - Concurrency with Threads and FuturesFeb 8th 2020 
+        - Talk #2 - Concurrency with Async I/0 March 14th 2020 
+        - Talk #3 - Paralellism in Python 
+
+
+## IMPORTANT NOTE
+
+
+
+    All content in this tutorial has been taken from the references below. What I have done is looking for some of the best
+    , relevant information and  organize it in a way that better help understands the subject .
+    I find this much better than re-create a content , and also because the creators are extremely skilled and experienced
+    personalities ,and as such are  much more capable and has much more knowledge than I have.
+    
+    This course is also a way of recognition to the creators of the content and their live long effort and their
+    contribution to Python.
+    
+    Take a time to follow them in their Social media Links below , and check their companies , courses ,
+    training and what they do. You will benefit immensely.
+    
+    I will take the freedom to start by mention all the references,  and documentation used in this Tutorial.
+
  
-## A brief introduction to the state of concurrency in Python  and this Serie
+## A brief introduction to the state of concurrency in Python
 
     In order to review  the state of Concurrency and Paralellism in Python, we will have 4 talks
     
