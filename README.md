@@ -22,7 +22,7 @@
   
   
   For Professional Services, Training and application development:
-  
+    - PYTHON SOFTWARE SOLUTIONS LLC
     -  email: david@pythonsoftware.solutions 
     -  web:   https://www.pythonsoftware.solutions
 
