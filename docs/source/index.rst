@@ -5,16 +5,18 @@ Second Part: Python Async I/O
 =============================
 
 
-Created by: David Gutierrez for PyMiami Org.
+Created by:
+David Gutierrez.
 email: david @ pymiami . org
 
-Join us at
-Twitter
-Facebook
+Joint our group social accounts to keep updated about upcoming events:
 
-Do you need help ?
+`Twitter <https://twitter.com/Py_Miami>`_
+`Facebook <https://www.facebook.com/PythonDevelopersMiami/>`_
 
-    Contact us for training at david @ pythonsoftware.solutions
+
+Do you need help or training?
+ Contact us at david @ pythonsoftware.solutions
 
 Important Note
 --------------
