@@ -21,10 +21,11 @@
   </table>
   
   
-  For Professional Services, Training and application development:
+  For Professional Services, training and application development, contact us at:
+  
     - PYTHON SOFTWARE SOLUTIONS LLC
-    -  email: david@pythonsoftware.solutions 
-    -  web:   https://www.pythonsoftware.solutions
+        -  email: david@pythonsoftware.solutions 
+        -  web:   https://www.pythonsoftware.solutions
 
 
 ##   Talks Schedules 
