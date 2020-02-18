@@ -2,10 +2,9 @@
 
 ### Created by David Gutierrez for PyMiami.
 
-   Join our Twitter group at : https://twitter.com/Py_Miami
-   Join our Facebook group at : https://www.facebook.com/groups/pymiami/
+
    <p align="center">
-      <img src="Twitter_Logo_Blue.png" width="10" title="Twitter Logo" alt="Twitter Logo">
+      <img src="Twitter_Logo_Blue.png" width="50" title="Twitter Logo" alt="Twitter Logo">
       <a href="https://twitter.com/Py_Miami">Join us at Twitter @Py_Miami</a>
   </p>
   
@@ -16,6 +15,9 @@
    For Professional Services, Training and Software Creation contact us @:  
      emails: david@pythonsoftware.solutions 
      https://www.pythonsoftware.solutions
+     
+   <p>Join our Twitter group at : https://twitter.com/Py_Miami</p>
+   <p>Join our Facebook group at : https://www.facebook.com/groups/pymiami/</p>
           
 
 ##   Created by David Gutierrez for 
