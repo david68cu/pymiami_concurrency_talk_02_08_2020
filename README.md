@@ -13,6 +13,23 @@
       </a>
   </p>
   
+  
+  <table>
+  <tr>
+      <td>  
+          <a href="https://twitter.com/Py_Miami">
+          <img src="Twitter_Logo_Blue.png" width="50" height="50" title="PyMiami Twitter Link">
+          </a>
+       </td>
+       <td>
+           <a href="https://www.facebook.com/PythonDevelopersMiami/">
+           <img src="f_logo_RGB-Blue_1024.png" width="40" height="40" title="PyMiami Facebook Link">
+           </a>
+       </td>
+  </tr>
+  </table>
+  
+  
   For Professional Services, Training and application development:
   
     -  email: david@pythonsoftware.solutions 
