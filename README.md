@@ -24,15 +24,16 @@
   For Professional Services, training and application development, contact us at:
   
     - PYTHON SOFTWARE SOLUTIONS LLC
-        -  email: david@pythonsoftware.solutions 
+    
+        -  email: david @ pythonsoftware. solutions 
         -  web:   https://www.pythonsoftware.solutions
 
 
 ##   Talks Schedules 
 
-        Talk #1 - Concurrency with Threads and Futures , Feb 8th 2020.
-        Talk #2 - Concurrency with Async I/0,  March 14th 2020 .
-        Talk #3 - Paralellism in Python,  April 14th 2020 .
+        - Concurrency with Threads and Futures , Feb 8th 2020.
+        - Concurrency with Async I/0,  March 14th 2020 .
+        - Paralellism in Python,  April 14th 2020 .
 
 
 ## IMPORTANT NOTE
