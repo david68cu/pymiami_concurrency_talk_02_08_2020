@@ -3,9 +3,10 @@
 ### Created by David Gutierrez for PyMiami.
 
 
-   <p align="center">
-      <img src="Twitter_Logo_Blue.png" width="50" title="Twitter Logo" alt="Twitter Logo">
-      <a href="https://twitter.com/Py_Miami">Join us at Twitter @Py_Miami</a>
+   <p align="left">
+      Twitter @Py_Miami <a href="https://twitter.com/Py_Miami">
+      <img src="Twitter_Logo_Blue.png" width="50" height="50" title="Twitter Logo" alt="Twitter Logo">
+      </a>
   </p>
   
    PyMiami 
