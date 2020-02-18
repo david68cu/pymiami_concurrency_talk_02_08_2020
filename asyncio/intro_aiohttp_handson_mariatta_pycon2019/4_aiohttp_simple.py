@@ -1,10 +1,13 @@
 import asyncio
 import aiohttp
+import ssl
+
+ssl_ctx = ssl.SSLContext()
 
 
-async def download_pep(url):
+async def download_pep(url) -> bytes:
     async with aiohttp.ClientSession() as session:
-        async with session.get(url) as resp:
+        async with session.get(url, ssl=ssl_ctx) as resp:
             content = await resp.read()
             print(content)
             return content
@@ -29,3 +32,18 @@ async def web_scrape_task(pep_number):
 
 
 asyncio.run(web_scrape_task(8010))
+
+# We very likely will hit here an SSL error : aiohttp.client_exceptions.ClientConnectorCertificateError:
+# Cannot connect to host www.python.org:443 ssl:True [SSLCertVerificationError:
+# (1, '[SSL: CERTIFICATE_VERIFY_FAILED]
+# certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)')]
+
+# As the error states aiohttp is failing to check the certificate from www.python.org:443 , as can not verify the issuer
+
+# Before we used requests ( for humans :-) ) requests uses certifi for root certificates source.
+# This approach has own advantages and disadvantages.
+#
+# aiohttp  decided to not rely on custom certificate libraries , so we need to use a ssl context
+
+# This is the reason we need to upload our scrip with ssl module
+#

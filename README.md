@@ -1,11 +1,14 @@
 # PyMiami Concurrency Talk
 
-git clone https://github.com/david68cu/pymiami_concurrency_talk_Feb_2020.git
+git clone https://github.com/david68cu/pymiami_concurrency_talk_02082020
 
+https://github.com/david68cu/pymiami_concurrency_talk_02082020
 
 ##### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#####   CREATED BY DAVID GUTIERREZ FOR PYMIAMI TALK FEB 2020 FIU 
-#####   david@pythonsoftware.solutions , david@pymiami.org
+#####   Created by David Gutierrez for PyMiami.
+#####   Talk #1 - Feb 8th 2020 
+#####   Talk #2 - March 14th 2020 
+#####   emails: david@pythonsoftware.solutions , david@pymiami.org
 #####   https://www.pymiami.org , https://www.pythonsoftware.solutions
 #####   DO NOT RUN THIS EXERCISE AS IT COULD GENERATE A DoS attack 
 #####   Please reference the creators of this scripts as we did below 
@@ -14,9 +17,11 @@ git clone https://github.com/david68cu/pymiami_concurrency_talk_Feb_2020.git
          Quinlan, Brian             [see Reference section]
          Raymond Hettinger          [see Reference section]
          Miguel Grinberg            [see Reference section]
-         Mariatta, Andrew Svetlov   [see Reference section]
+         Mariatta Wijaya            [see Reference section]
+         Andrew Svetlov             [see Reference section]
 ######
-######
+######   This is the job of those mentioned  above.Follow them in Twitter 
+######   Look for their course, books, training, courses and talks
 #### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
 ## A brief introduction to the state of concurrency in Python  and this Serie
@@ -126,16 +131,20 @@ This is a simple case of Python pure Thread usage.But we should note the followi
                                args=('thinking!', done))
     ```
     - Had we used multithread to run and write over
+    - Threads are owned for the OS , so we have a limitation in its use
+    - Threads are expenses to create (les tha process sure) but still expensives
+    - The switching from threads is decided by the OS, sometime in teh most improper moment
+    - We will see that  in async I/O this change occurrs at teh will of thea application
     
 - Why we need thread safe Queues and locks if we have the GIL ? (exercise2.py)
 
      ....WINTER IS COMING : A nightmare with Threads
     
-    - Runs first exercise1.py syn example so the classroom can see the expected result 
+    - Runs first exercise1.py in concurrency_keynote.. folder so the classroom can see the expected result 
     - Despite the GIL allowing one thread at a time , race conditions could exist , giving us unexpected results 
     - Due to the GIL, there is only ever one thread per process active to execute Python bytecode
     - It means that actions that can be done in one bytecode can be thread safe, everything else is not.
-    - Quickly take a look at Ramond exaclt in PyBay 2017
+    - Quickly take a look at Ramond talk in PyBay 2017
     - Explain exercise2.py in KeyNotes Folder
     - Explain the disassembled code I added to show how indeed the print() function and the counter +=1 assignation
       are build of multiple bytecode that are not thread safe as the GIL protect only one bytecode instruction
@@ -147,7 +156,7 @@ This is a simple case of Python pure Thread usage.But we should note the followi
 
 - INTRODUCTION
 - Talk about  Guido , Marietta and Miguel work for Python 
-- Ask the class to folow them in twitter so they could see how they think and behave and what they do and have done
+- Ask the class to follow them in Twitter so they could see how they think and behave and what they do and have done
 - Compare Flask Course form Miguel 
 - Talk about O'reilly Hur Flask course
 - Note that Python is free

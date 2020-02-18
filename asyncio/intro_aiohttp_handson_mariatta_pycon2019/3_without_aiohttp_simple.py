@@ -29,7 +29,7 @@ if __name__ == "__main__":
         write_to_file(i, content)
 
     elapsed = time.perf_counter() - s
-    print(f"Execution time: {elapsed:0.2f} seconds.")
+    print(f"Execution time: {elapsed:0.2f} seconds.")   # It took around 2.41 seconds see below
 
 
 # Begin downloading https://www.python.org/dev/peps/pep-8010/
