@@ -4,16 +4,7 @@
 
   <p> Joint our group social accounts </p>
 
-   <p>
-      <a href="https://twitter.com/Py_Miami">
-      <img src="Twitter_Logo_Blue.png" width="50" height="50" title="PyMiami Twitter Link">
-      </a>
-      <a href="https://www.facebook.com/PythonDevelopersMiami/">
-      <img src="f_logo_RGB-Blue_1024.png" width="40" height="40" title="PyMiami Facebook Link">
-      </a>
-  </p>
-  
-  
+
   <table>
   <tr>
       <td>  
