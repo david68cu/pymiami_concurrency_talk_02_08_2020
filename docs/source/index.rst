@@ -5,15 +5,21 @@ Second Part: Python Async I/O
 =============================
 
 
-Created by:
+Created by David Gutierrez for PyMiami
+PyMiami and FIU School of Engineering and Computers hold this FREE events monthly.
+
+Contact Information
+^^^^^^^^^^^^^^^^^^^
+
+
 David Gutierrez.
 email: david @ pymiami . org
 
 Joint our group social accounts to keep updated about upcoming events:
 
-`Twitter <https://twitter.com/Py_Miami>`_
-`Facebook <https://www.facebook.com/PythonDevelopersMiami/>`_
+    `Twitter <https://twitter.com/Py_Miami>`_
 
+    `Facebook <https://www.facebook.com/PythonDevelopersMiami/>`_
 
 Do you need help or training?
  Contact us at david @ pythonsoftware.solutions
@@ -21,7 +27,8 @@ Do you need help or training?
 Important Note
 --------------
 
-All content in this tutorial has been taken from the references below. What I have done is looking for some of the best
+
+All content in this tutorial has been taken from the references named below. What I have done is looking for some of the best
 , relevant information and  organize it in a way that better help understands the subject .
 I find this much better than re-create a content , and also because the creators are extremely skilled and experienced
 personalities ,and as such are  much more capable and has much more knowledge than I have.
@@ -73,7 +80,8 @@ Documents and Papers
 At the beginning there were threads..
 ======================================
 
-In our first talk about Concurrency we discussed the evolution of concurrency in Python.
+In the first talk , "Talk #1 - Concurrency with Threads and Futures , Feb 8th 2020.",
+We discussed the evolution of concurrency in Python.
 
 We started by analyzing chapter 17,  and first part of chapter 18 of Luciano Ramalho book  "Fluent Python" [6]
 In chapter 17 "Concurrency and Features" , Luciano starts by explaining a sequential download . It is of course necessary
@@ -102,8 +110,10 @@ If you want to know more about this , we encourage you to search our talk or the
 
 
 
-And here we are one month later to learn about async I/O , await from the Thread and blocked world into a new universe of
-cooperation multitasking  and event loops. But then what is Async I/O and what Python have to do with this
+And here we are one month later to learn about async I/O , far away from the thread and blocked world we discussed
+in February, entering into a new universe of cooperation multitasking  and event loops.
+
+But then, we wonder  what is Async I/O and what Python have to do with this.?
 
 
 ...And then we were given a breath of life Async I/O
@@ -120,41 +130,43 @@ async I/O should easily get the concept in Python.
 
 So Async I/O is not a Python concept and indeed has been implemented in other languages a long time ago
 
-Async I/O gives us the possibility of write concurrent programs , without using Threads. Threads belong to the OS
+Async I/O gives us the possibility of writing  concurrent programs , without using Threads. Threads belong to the OS
 and as such are more expensive and less scalable than async I/O cooperative multitasking . So just using one thread ,
 the main thread,  we are able to gain multiprocessing capability.
 
 Before going any step further , this is the moment to take a look at Miguel Grinberg,  `Asynchronous Python for the
 Complete Beginner talk [2] where in just a few minutes , Miguel quickly describe the universe of async programing.
 
+
 But then we want the details , the how this was possible, and indeed understand how async I/O works ?
 
 
-How the heck does async/await work in Python
---------------------------------------------
+How the heck does async/await work in Python [11]
+-------------------------------------------------
 
-When you feel afraid of not knowing enought about async I/O , it will be a releif to know that Brett  Cannon asked himself
-the above question in  [11]. Once you know who he is you will feel and imediate peace of mind , on having
-some doubts ( or maybe many ?) about async I/O. He had too at some moment !!
+When you feel afraid of not knowing enough about async I/O , it will be a relief to know that Brett  Cannon asked himself
+the above question in  [11]. Once you know who he is you will feel and immediate peace of mind , on having
+some doubts ( or maybe many ?) about async I/O. He had too at some time!!
 
-David Beazley in [8] and [9], clearly describe the evolution of async I/O
+David Beazley in [8] and [9], clearly describe the evolution of async I/O.
 Meanwhile Brett  Cannon in [11] starts by taking us back to the origin and uses of 'yield from'  in coroutines , is
-David Beazley the one that take us even further back and deeper , by starting for a diferentiation between generators ,
+David Beazley the one that takes us even further back and deeper , by starting for a differentiation between generators ,
 an coroutines.
 
-David Beazley  make a distintion that generators and generators function should be differenciated from coroutines in both
-its intention and uses. We will see this distintion below
+David Beazley  make a distinction that generators and generators function should be differentiated from coroutines in both
+its intention and uses. We will see this distinction below.
 
-Generator
-^^^^^^^^^
 
-    Generator functions allow you to declare a function that behaves like an iterator,
-    i.e. it can be used in a for loop.
+Iterables and Iterator and Generator Function
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    For this you need to implement the __next__ and __iter__ methods
+    Generators are intrinsically linked to iteration. And that is the reason we start by analyzing the meaning of
+    iterable and iterator in Python.
 
-    Luciano Ramalho in [6] , Chapter 14 clearly defined iterable and iterator in Chapter 14. But beofre going there
-    take note the name of that Chapter "Iterables, Iterator and Generators". We will see why later
+    Luciano Ramalho in [6] , Chapter 14 clearly defined iterable and iterator concepts. But before going there
+    take note the name of that Chapter :
+
+    "Iterables, Iterator and Generators".
 
     iterable:
 
@@ -165,7 +177,7 @@ Generator
     It’s important to be clear about the relationship between iterables and iterators:
     Python obtains iterators from iterables.
 
-    In page 418 he stops to explain why Sequences are iterable and what teh interpreter oes when needs to
+    In page 418 [6], Luciano  stops to explain why Sequences are iterable and what the interpreter does when it needs to
     iterate over an object
 
 
@@ -177,9 +189,7 @@ Generator
     or raises StopIteration when there are no more items. Python iterators also implement the __iter__ method
     so they are iterable as well.
 
-    Now let see an example and carefully look that we have not used the keyword yield so far for anything:
-
-
+    Now let see an example and carefully look that we have not used the keyword "yield" so far for anything:
 
 
 
@@ -216,6 +226,11 @@ Generator Functions ( yield appears)
         Note the use of the yield to the left of the value. So yield is pausing execution of the countdown() function
     and returning back  to the caller both the n value and the control.
 
+    A Python function that has the yield keyword in its body is a generator function.
+   When this function is called it return a generator object. In other words a generator function is a generator factory
+   ... pag 428 [6]
+
+    And that is all about Generators , Iterator and Iterables.
 
     But ....
 
@@ -258,7 +273,7 @@ Coroutines and its importance in async operations
      Now is time we can understand and see yield from in Action.
 
 Luciano Ramalho , Fluent Python,  Page [496]  Example 16-17
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
     .. code-block:: python

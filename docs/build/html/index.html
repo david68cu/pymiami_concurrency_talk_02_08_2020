@@ -35,11 +35,24 @@
 </div>
 <div class="section" id="second-part-python-async-i-o">
 <h1>Second Part: Python Async I/O<a class="headerlink" href="#second-part-python-async-i-o" title="Permalink to this headline">¶</a></h1>
-<p>Created by: David Gutierrez for PyMiami Org.
-email: david at pymiami dot org</p>
+<p>Created by David Gutierrez for PyMiami
+PyMiami and FIU School of Engineering and Computers hold this FREE events monthly.</p>
+<div class="section" id="contact-information">
+<h2>Contact Information<a class="headerlink" href="#contact-information" title="Permalink to this headline">¶</a></h2>
+<p>David Gutierrez.
+email: david &#64; pymiami . org</p>
+<p>Joint our group social accounts to keep updated about upcoming events:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://twitter.com/Py_Miami">Twitter</a></p>
+<p><a class="reference external" href="https://www.facebook.com/PythonDevelopersMiami/">Facebook</a></p>
+</div></blockquote>
+<dl class="simple">
+<dt>Do you need help or training?</dt><dd><p>Contact us at david &#64; pythonsoftware.solutions</p>
+</dd>
+</dl>
 <div class="section" id="important-note">
-<h2>Important Note<a class="headerlink" href="#important-note" title="Permalink to this headline">¶</a></h2>
-<p>All content in this tutorial has been taken from the references below. What I have done is looking for some of the best
+<h3>Important Note<a class="headerlink" href="#important-note" title="Permalink to this headline">¶</a></h3>
+<p>All content in this tutorial has been taken from the references named below. What I have done is looking for some of the best
 , relevant information and  organize it in a way that better help understands the subject .
 I find this much better than re-create a content , and also because the creators are extremely skilled and experienced
 personalities ,and as such are  much more capable and has much more knowledge than I have.</p>
@@ -50,7 +63,7 @@ training and what they do. You will benefit immensely.</p>
 <p>I will take the freedom to start by mention all the references,  and documentation used in this Tutorial.</p>
 </div>
 <div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>1- Yury Selivanov,  <a class="reference external" href="https://www.youtube.com/watch?v=2ZFFv-wZ8_g">Async await and asyncio in Python 3.6 and beyond PyCon 2017.</a></p></li>
@@ -67,8 +80,10 @@ training and what they do. You will benefit immensely.</p>
 <li><p>12- Raymond Hettinger, <a class="reference external" href="https://www.youtube.com/watch?v=9zinZmE3Ogk&amp;t=55s">Keynote on Concurrency, PyBay 2017</a></p></li>
 </ul>
 </div></blockquote>
+</div>
+</div>
 <div class="section" id="documents-and-papers">
-<h3>Documents and Papers<a class="headerlink" href="#documents-and-papers" title="Permalink to this headline">¶</a></h3>
+<h2>Documents and Papers<a class="headerlink" href="#documents-and-papers" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p>10- <a class="reference external" href="https://pypi.org/project/certifi/">certifi documentation</a>.</p></li>
@@ -84,10 +99,10 @@ training and what they do. You will benefit immensely.</p>
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="at-the-beginning-there-were-threads">
 <h1>At the beginning there were threads..<a class="headerlink" href="#at-the-beginning-there-were-threads" title="Permalink to this headline">¶</a></h1>
-<p>In our first talk about Concurrency we discussed the evolution of concurrency in Python.</p>
+<p>In the first talk , “Talk #1 - Concurrency with Threads and Futures , Feb 8th 2020.”,
+We discussed the evolution of concurrency in Python.</p>
 <p>We started by analyzing chapter 17,  and first part of chapter 18 of Luciano Ramalho book  “Fluent Python” [6]
 In chapter 17 “Concurrency and Features” , Luciano starts by explaining a sequential download . It is of course necessary
 we can see a sequential example and how we could later improve it using concurrency.</p>
@@ -129,8 +144,9 @@ learned the complexity and perils that lure on the Threads world</p>
 </tr>
 </tbody>
 </table>
-<p>And here we are one month later to learn about async I/O , await from the Thread and blocked world into a new universe of
-cooperation multitasking  and event loops. But then what is Async I/O and what Python have to do with this</p>
+<p>And here we are one month later to learn about async I/O , far away from the thread and blocked world we discussed
+in February, entering into a new universe of cooperation multitasking  and event loops.</p>
+<p>But then, we wonder  what is Async I/O and what Python have to do with this.?</p>
 </div>
 <div class="section" id="and-then-we-were-given-a-breath-of-life-async-i-o">
 <h1>…And then we were given a breath of life Async I/O<a class="headerlink" href="#and-then-we-were-given-a-breath-of-life-async-i-o" title="Permalink to this headline">¶</a></h1>
@@ -141,50 +157,49 @@ processing that permits other processing to continue before the transmission has
 long time ago . Łukasz Langa, <a href="#id3"><span class="problematic" id="id4">`</span></a>Thinking In Coroutines - PyCon 2016 [6] states that those who knows JavaScript/ NodeJS
 async I/O should easily get the concept in Python.</p>
 <p>So Async I/O is not a Python concept and indeed has been implemented in other languages a long time ago</p>
-<p>Async I/O gives us the possibility of write concurrent programs , without using Threads. Threads belong to the OS
+<p>Async I/O gives us the possibility of writing  concurrent programs , without using Threads. Threads belong to the OS
 and as such are more expensive and less scalable than async I/O cooperative multitasking . So just using one thread ,
 the main thread,  we are able to gain multiprocessing capability.</p>
 <p>Before going any step further , this is the moment to take a look at Miguel Grinberg,  <a href="#id5"><span class="problematic" id="id6">`</span></a>Asynchronous Python for the
 Complete Beginner talk [2] where in just a few minutes , Miguel quickly describe the universe of async programing.</p>
 <p>But then we want the details , the how this was possible, and indeed understand how async I/O works ?</p>
-<div class="section" id="how-the-heck-does-async-await-work-in-python">
-<h2>How the heck does async/await work in Python<a class="headerlink" href="#how-the-heck-does-async-await-work-in-python" title="Permalink to this headline">¶</a></h2>
-<p>When you feel afraid of not knowing enought about async I/O , it will be a releif to know that Brett  Cannon asked himself
-the above question in  [11]. Once you know who he is you will feel and imediate peace of mind , on having
-some doubts ( or maybe many ?) about async I/O. He had too at some moment !!</p>
-<p>David Beazley in [8] and [9], clearly describe the evolution of async I/O
+<p>When you feel afraid of not knowing enough about async I/O , it will be a relief to know that Brett  Cannon asked himself
+the above question in  [11]. Once you know who he is you will feel and immediate peace of mind , on having
+some doubts ( or maybe many ?) about async I/O. He had too at some time!!</p>
+<p>David Beazley in [8] and [9], clearly describe the evolution of async I/O.
 Meanwhile Brett  Cannon in [11] starts by taking us back to the origin and uses of ‘yield from’  in coroutines , is
-David Beazley the one that take us even further back and deeper , by starting for a diferentiation between generators ,
+David Beazley the one that takes us even further back and deeper , by starting for a differentiation between generators ,
 an coroutines.</p>
-<p>David Beazley  make a distintion that generators and generators function should be differenciated from coroutines in both
-its intention and uses. We will see this distintion below</p>
-<div class="section" id="generator">
-<h3>Generator<a class="headerlink" href="#generator" title="Permalink to this headline">¶</a></h3>
+<p>David Beazley  make a distinction that generators and generators function should be differentiated from coroutines in both
+its intention and uses. We will see this distinction below.</p>
+<div class="section" id="iterables-and-iterator-and-generator-function">
+<h2>Iterables and Iterator and Generator Function<a class="headerlink" href="#iterables-and-iterator-and-generator-function" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Generator functions allow you to declare a function that behaves like an iterator,
-i.e. it can be used in a for loop.</p>
-<p>For this you need to implement the __next__ and __iter__ methods</p>
-<p>Luciano Ramalho in [6] , Chapter 14 clearly defined iterable and iterator in Chapter 14. But beofre going there
-take note the name of that Chapter “Iterables, Iterator and Generators”. We will see why later</p>
+<div><p>Generators are intrinsically linked to iteration. And that is the reason we start by analyzing the meaning of
+iterable and iterator in Python.</p>
+<p>Luciano Ramalho in [6] , Chapter 14 clearly defined iterable and iterator concepts. But before going there
+take note the name of that Chapter :</p>
+<p>“Iterables, Iterator and Generators”.</p>
 <p>iterable:</p>
 <p>Any object from which the iter built-in function can obtain an iterator. Objects implementing an __iter__ method
 returning an iterator are iterable.
 Sequences are always iterable; as are objects implementing a __getitem__ method that takes 0-based indexes.</p>
 <p>It’s important to be clear about the relationship between iterables and iterators:
 Python obtains iterators from iterables.</p>
-<p>In page 418 he stops to explain why Sequences are iterable and what teh interpreter oes when needs to
+<p>In page 418 [6], Luciano  stops to explain why Sequences are iterable and what the interpreter does when it needs to
 iterate over an object</p>
 <p>Then in the same Chapter in page 423 he gives us a definition of iterator</p>
 <p>iterator:</p>
 <p>Any object that implements the __next__ no-argument method that returns the next item in a series
 or raises StopIteration when there are no more items. Python iterators also implement the __iter__ method
 so they are iterable as well.</p>
-<p>Now let see an example and carefully look that we have not used the keyword yield so far for anything:</p>
+<p>Now let see an example and carefully look that we have not used the keyword “yield” so far for anything:</p>
 </div></blockquote>
 </div>
 <div class="section" id="generator-functions-yield-appears">
-<h3>Generator Functions ( yield appears)<a class="headerlink" href="#generator-functions-yield-appears" title="Permalink to this headline">¶</a></h3>
+<h2>Generator Functions ( yield appears)<a class="headerlink" href="#generator-functions-yield-appears" title="Permalink to this headline">¶</a></h2>
 <blockquote>
+<div><blockquote>
 <div><p>Python provides generator functions as a convenient shortcut to building iterators.
 For this Python uses yield</p>
 <p>Simple generator function countdown.py , taken from  David Beazley… [9]</p>
@@ -209,6 +224,12 @@ For this Python uses yield</p>
 <p>Note the use of the yield to the left of the value. So yield is pausing execution of the countdown() function</p>
 </div>
 <p>and returning back  to the caller both the n value and the control.</p>
+<p>A Python function that has the yield keyword in its body is a generator function.</p>
+</div></blockquote>
+<p>When this function is called it return a generator object. In other words a generator function is a generator factory
+… pag 428 [6]</p>
+<blockquote>
+<div><p>And that is all about Generators , Iterator and Iterables.</p>
 <p>But ….</p>
 <p>But people knew that if we took the “pausing” part of generators and added in a “send stuff
 back in” aspect to them, Python would suddenly have the concept of coroutines in Python ..Brett [11]</p>
@@ -216,9 +237,10 @@ back in” aspect to them, Python would suddenly have the concept of coroutines 
 So far we have seen generators being able to send values back to the caller.
 It will change soon and we will see that they will be able to accept values from the caller</p>
 </div></blockquote>
+</div></blockquote>
 </div>
 <div class="section" id="coroutines-and-its-importance-in-async-operations">
-<h3>Coroutines and its importance in async operations<a class="headerlink" href="#coroutines-and-its-importance-in-async-operations" title="Permalink to this headline">¶</a></h3>
+<h2>Coroutines and its importance in async operations<a class="headerlink" href="#coroutines-and-its-importance-in-async-operations" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Coroutines are just special generators …. You sent values into</p>
 <p>Coroutines are very similar to generators in Python: they both use yield.
@@ -243,8 +265,9 @@ coroutines</p>
 <p>Now is time we can understand and see yield from in Action.</p>
 </div></blockquote>
 </div></blockquote>
+</div>
 <div class="section" id="luciano-ramalho-fluent-python-page-496-example-16-17">
-<h4>Luciano Ramalho , Fluent Python,  Page [496]  Example 16-17<a class="headerlink" href="#luciano-ramalho-fluent-python-page-496-example-16-17" title="Permalink to this headline">¶</a></h4>
+<h2>Luciano Ramalho , Fluent Python,  Page [496]  Example 16-17<a class="headerlink" href="#luciano-ramalho-fluent-python-page-496-example-16-17" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">averager</span><span class="p">():</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -302,9 +325,8 @@ coroutines</p>
 <p>We can easily see now the power of “yield from” and how this keywords will allow us to extract values and send
 values directly to the subgenerator, which yield data back at the caller.</p>
 </div>
-</div>
 <div class="section" id="interlude-generators-are-not-coroutines">
-<h3>Interlude : Generators are not Coroutines<a class="headerlink" href="#interlude-generators-are-not-coroutines" title="Permalink to this headline">¶</a></h3>
+<h2>Interlude : Generators are not Coroutines<a class="headerlink" href="#interlude-generators-are-not-coroutines" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>….(David Beazley minute 30:42 of Curious Course on Coroutines and Concurrency[9]</p>
 </div></blockquote>
@@ -334,7 +356,6 @@ Below Table show the differences.</p>
 </tbody>
 </table>
 </div></blockquote>
-</div>
 </div>
 </div>
 <div class="section" id="indices-and-tables">

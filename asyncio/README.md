@@ -38,16 +38,18 @@ Then compile the html with make:
 
 This generates a conf.py file and html docs 
 
+
+
 Workflow:
     - Inside the source folder we have the index.srt that we will edit 
     - We will make html to make the new html file with the changes by 
            cd /docs
            make html
     - If we need to change teh configuration we can do it by changing the conf.py file 
-    - To see changes in browser  open /docs/build/index.html
+    - To see changes in browser  open  docs/build/html/index.html 
 
 
-We can make changes to index.
+
 
 
 
