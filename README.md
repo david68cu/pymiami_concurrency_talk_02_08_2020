@@ -2,35 +2,28 @@
 
 ### Created by David Gutierrez for PyMiami.
 
-  <p> Joint us at Facebook and Twitter </p>
+  <p> Joint our group social accounts </p>
 
    <p>
       <a href="https://twitter.com/Py_Miami">
       <img src="Twitter_Logo_Blue.png" width="50" height="50" title="PyMiami Twitter Link">
       </a>
       <a href="https://www.facebook.com/PythonDevelopersMiami/">
-      <img src="f_logo_RGB-Blue_1024.png" width="50" height="50" title="PyMiami Facebook Link">
+      <img src="f_logo_RGB-Blue_1024.png" width="30" height="30" title="PyMiami Facebook Link">
       </a>
   </p>
   
-
+  For Professional Services, Training and application development:
   
-   PyMiami 
-     emails: david@pymiami.org
-     https://www.pymiami.org
-     
-   For Professional Services, Training and Software Creation contact us @:  
-     emails: david@pythonsoftware.solutions 
-     https://www.pythonsoftware.solutions
-     
-   <p>Join our Twitter group at : https://twitter.com/Py_Miami</p>
-   <p>Join our Facebook group at : https://www.facebook.com/groups/pymiami/</p>
-          
+    -  email: david@pythonsoftware.solutions 
+    -  web:   https://www.pythonsoftware.solutions
 
-##   Created by David Gutierrez for 
-        - Talk #1 - Concurrency with Threads and FuturesFeb 8th 2020 
-        - Talk #2 - Concurrency with Async I/0 March 14th 2020 
-        - Talk #3 - Paralellism in Python 
+
+##   Talks Schedules 
+
+        Talk #1 - Concurrency with Threads and Futures , Feb 8th 2020.
+        Talk #2 - Concurrency with Async I/0,  March 14th 2020 .
+        Talk #3 - Paralellism in Python,  April 14th 2020 .
 
 
 ## IMPORTANT NOTE
@@ -49,8 +42,21 @@
     training and what they do. You will benefit immensely.
     
     I will take the freedom to start by mention all the references,  and documentation used in this Tutorial.
+    
 
- 
+## References
+
+    -  Ramalho, Luciano. Fluent Python: Clear, Concise, and Effective Programming. Chapter 17th Concurrency with Future
+    -  Quinlan, Brian: The Future is soon! (https://pyvideo.org/pycon-au-2010/pyconau-2010--the-future-is-soon.html) 
+        at PyCon Australia 2010 (INTRODUCTION OF PEP 3148)
+    -  Raymond Hettinger, Keynote on Concurrency, PyBay 2017(https://www.youtube.com/watch?v=9zinZmE3Ogk)
+    -  Disassembled code created by David Gutierrez 
+    -  Mariatta, Andrew Svetlov - Hands-on Intro to aiohttp - PyCon 2019
+       https://www.youtube.com/watch?v=OxzVApXKWYM
+       https://us-pycon-2019-tutorial.readthedocs.io/asyncio_intro.html  
+    -  Miguel Grinberg Asynchronous Python for the Complete Beginner PyCon 2017
+       https://www.youtube.com/watch?v=iG6fr81xHKA
+
 ## A brief introduction to the state of concurrency in Python
 
     In order to review  the state of Concurrency and Paralellism in Python, we will have 4 talks
@@ -194,16 +200,4 @@ This is a simple case of Python pure Thread usage.But we should note the followi
 
 ## Four   part:  Blame DS and AI : Parallelism 
     
-### References
-
--  Ramalho, Luciano. Fluent Python: Clear, Concise, and Effective Programming. Chapter 17th Concurrency with Future
--  Quinlan, Brian: The Future is soon! (https://pyvideo.org/pycon-au-2010/pyconau-2010--the-future-is-soon.html) 
-    at PyCon Australia 2010 (INTRODUCTION OF PEP 3148)
--  Raymond Hettinger, Keynote on Concurrency, PyBay 2017(https://www.youtube.com/watch?v=9zinZmE3Ogk)
--  Disassembled code created by David Gutierrez 
--  Mariatta, Andrew Svetlov - Hands-on Intro to aiohttp - PyCon 2019
-   https://www.youtube.com/watch?v=OxzVApXKWYM
-   https://us-pycon-2019-tutorial.readthedocs.io/asyncio_intro.html  
--  Miguel Grinberg Asynchronous Python for the Complete Beginner PyCon 2017
-   https://www.youtube.com/watch?v=iG6fr81xHKA
 
