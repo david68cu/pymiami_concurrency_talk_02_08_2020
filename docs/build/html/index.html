@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>CONCURRENCY IN PYTHON &#8212; PyMiami  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="concurrency-in-python">
+<h1>CONCURRENCY IN PYTHON<a class="headerlink" href="#concurrency-in-python" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="second-part-python-async-i-o">
+<h1>Second Part: Python Async I/O<a class="headerlink" href="#second-part-python-async-i-o" title="Permalink to this headline">¶</a></h1>
+<p>Created by: David Gutierrez for PyMiami Org.
+email: david at pymiami dot org</p>
+<div class="section" id="important-note">
+<h2>Important Note<a class="headerlink" href="#important-note" title="Permalink to this headline">¶</a></h2>
+<p>All content in this tutorial has been taken from the references below. What I have done is looking for some of the best
+, relevant information and  organize it in a way that better help understands the subject .
+I find this much better than re-create a content , and also because the creators are extremely skilled and experienced
+personalities ,and as such are  much more capable and has much more knowledge than I have.</p>
+<p>This course is also a way of recognition to the creators of the content and their live long effort and their
+contribution to Python.</p>
+<p>Take a time to follow them in their Social media Links below , and check their companies , courses ,
+training and what they do. You will benefit immensely.</p>
+<p>I will take the freedom to start by mention all the references,  and documentation used in this Tutorial.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>1- Yury Selivanov,  <a class="reference external" href="https://www.youtube.com/watch?v=2ZFFv-wZ8_g">Async await and asyncio in Python 3.6 and beyond PyCon 2017.</a></p></li>
+<li><p>2- Miguel Grinberg,  <a class="reference external" href="https://www.youtube.com/watch?v=iG6fr81xHKA">Asynchronous Python for the Complete Beginner PyCon 2017.</a></p></li>
+<li><p>3- John Reese, <a class="reference external" href="https://www.youtube.com/watch?v=0kXaLh8Fz3k">Thinking Outside the GIL with AsyncIO and Multiprocessing - PyCon 2018.</a></p></li>
+<li><p>4- Mariatta Wijaya, <a class="reference external" href="https://www.youtube.com/watch?v=OxzVApXKWYM">Hands-on Intro to aiohttp - PyCon 2019] video.</a></p></li>
+<li><p>5- Andrew Svetlov, <a class="reference external" href="https://us-pycon-2019-tutorial.readthedocs.io/asyncio_intro.html">Hands-on Intro to aiohttp - PyCon 2019] slides.</a></p></li>
+<li><p>6- Luciano Ramalho, <a class="reference external" href="https://www.amazon.com/Fluent-Python-Concise-Effective-Programming/dp/1491946008">Fluent Python 1st Edition,  book , Chapter 16, Coroutines page 480.</a></p></li>
+<li><p>7- Brett Cannon, <a class="reference external" href="https://snarky.ca/how-the-heck-does-async-await-work-in-python-3-5/).">How async/await works in Python3.5.</a></p></li>
+<li><p>8- David Beazley, <a class="reference external" href="https://www.youtube.com/watch?v=lYe8W04ERnY">Python Brasil 2015 keynote and his curio framework is proof of above concept</a></p></li>
+<li><p>9- David Beazley, <a class="reference external" href="http://www.dabeaz.com/coroutines/">Curios Course on Coroutines and Concurrency,</a></p></li>
+<li><p>10- Łukasz Langa, <a class="reference external" href="https://www.youtube.com/watch?v=l4Nn-y9ktd4">Thinking In Coroutines - PyCon 2016,</a></p></li>
+<li><p>11- Brett Cannon, <a class="reference external" href="https://snarky.ca/how-the-heck-does-async-await-work-in-python-3-5/">How the heck does async/await work in Python 3.5?,</a></p></li>
+<li><p>12- Raymond Hettinger, <a class="reference external" href="https://www.youtube.com/watch?v=9zinZmE3Ogk&amp;t=55s">Keynote on Concurrency, PyBay 2017</a></p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="documents-and-papers">
+<h3>Documents and Papers<a class="headerlink" href="#documents-and-papers" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>10- <a class="reference external" href="https://pypi.org/project/certifi/">certifi documentation</a>.</p></li>
+<li><p>11- <a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext">SSL context documentation</a>.</p></li>
+<li><p>12- <a class="reference external" href="https://docs.aiohttp.org/en/stable/">aiohttp documentation,</a>.</p></li>
+<li><p>13- <a class="reference external" href="https://www.python.org/dev/peps/pep-0492/#id34">PEP 492, Coroutines with async and await syntax,</a>.</p></li>
+<li><p>14- <a class="reference external" href="https://docs.python.org/3/library/asyncio-eventloop.html">Python Event loop,</a>.</p></li>
+<li><p>15- <a class="reference external" href="https://docs.python.org/3/library/asyncio-task.html#coroutines">Coroutines and tasks,</a>.</p></li>
+<li><p>16- <a class="reference external" href="https://www.python.org/dev/peps/pep-0380/">PEP 380, Syntax for Delegating to a Subgenerator.</a>.</p></li>
+</ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="at-the-beginning-there-were-threads">
+<h1>At the beginning there were threads..<a class="headerlink" href="#at-the-beginning-there-were-threads" title="Permalink to this headline">¶</a></h1>
+<p>In our first talk about Concurrency we discussed the evolution of concurrency in Python.</p>
+<p>We started by analyzing chapter 17,  and first part of chapter 18 of Luciano Ramalho book  “Fluent Python” [6]
+In chapter 17 “Concurrency and Features” , Luciano starts by explaining a sequential download . It is of course necessary
+we can see a sequential example and how we could later improve it using concurrency.</p>
+<p>Luciano starts  Chapter 18  with an example of Threads, and later move us to coroutines and finally async I/O.</p>
+<p>We discussed chapter 17 and used the treads example in Chapter 18  to learn about Threads and Futures</p>
+<p>To learn about Threads we fully discussed Raymond Hettinger talk, “Keynote on Concurrency, PyBay 2017” , where we
+learned the complexity and perils that lure on the Threads world</p>
+<p>Finally we were able to  arrive to below evolutionary conclusion in Table 1.</p>
+<p>If you want to know more about this , we encourage you to search our talk or the resources mentioned.</p>
+<blockquote>
+<div><p>CONCURRENCY IN PYTHON : “Dealing with lots of things at once”
+[6] Chapter 18th</p>
+</div></blockquote>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-text">Table 1</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Python</p></th>
+<th class="head"><p>Python 3.2/ 2011</p></th>
+<th class="head"><p>Python 3.4/2014           Created by Guido</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p>current.futures ThreadpoolExecutor Context Manager</p></td>
+<td><p>asyncio</p></td>
+</tr>
+<tr class="row-odd"><td><p>Threads, Locks,Semaphore,Event,Timer,Queue</p></td>
+<td><p>Threads, Locks,Semaphore,Event,Timer,Queue</p></td>
+<td><p>Coroutines, AsyncIO not blocking loops, cal backs</p></td>
+</tr>
+<tr class="row-even"><td><p>Multi Thread Processing</p></td>
+<td><p>Multi Thread Processing</p></td>
+<td><p>Single Thread Processing</p></td>
+</tr>
+</tbody>
+</table>
+<p>And here we are one month later to learn about async I/O , await from the Thread and blocked world into a new universe of
+cooperation multitasking  and event loops. But then what is Async I/O and what Python have to do with this</p>
+</div>
+<div class="section" id="and-then-we-were-given-a-breath-of-life-async-i-o">
+<h1>…And then we were given a breath of life Async I/O<a class="headerlink" href="#and-then-we-were-given-a-breath-of-life-async-i-o" title="Permalink to this headline">¶</a></h1>
+<p>What is async I/O ?</p>
+<p>As per Wikipedia ” In computer science, asynchronous I/O (also non-sequential I/O) is a form of input/output
+processing that permits other processing to continue before the transmission has finished.</p>
+<p>David Beazley, <a href="#id1"><span class="problematic" id="id2">`</span></a>Python Brasil 2015 keynote…[8] , starts by recounting that Async I/O was implemented by C# a
+long time ago . Łukasz Langa, <a href="#id3"><span class="problematic" id="id4">`</span></a>Thinking In Coroutines - PyCon 2016 [6] states that those who knows JavaScript/ NodeJS
+async I/O should easily get the concept in Python.</p>
+<p>So Async I/O is not a Python concept and indeed has been implemented in other languages a long time ago</p>
+<p>Async I/O gives us the possibility of write concurrent programs , without using Threads. Threads belong to the OS
+and as such are more expensive and less scalable than async I/O cooperative multitasking . So just using one thread ,
+the main thread,  we are able to gain multiprocessing capability.</p>
+<p>Before going any step further , this is the moment to take a look at Miguel Grinberg,  <a href="#id5"><span class="problematic" id="id6">`</span></a>Asynchronous Python for the
+Complete Beginner talk [2] where in just a few minutes , Miguel quickly describe the universe of async programing.</p>
+<p>But then we want the details , the how this was possible, and indeed understand how async I/O works ?</p>
+<div class="section" id="how-the-heck-does-async-await-work-in-python">
+<h2>How the heck does async/await work in Python<a class="headerlink" href="#how-the-heck-does-async-await-work-in-python" title="Permalink to this headline">¶</a></h2>
+<p>When you feel afraid of not knowing enought about async I/O , it will be a releif to know that Brett  Cannon asked himself
+the above question in  [11]. Once you know who he is you will feel and imediate peace of mind , on having
+some doubts ( or maybe many ?) about async I/O. He had too at some moment !!</p>
+<p>David Beazley in [8] and [9], clearly describe the evolution of async I/O
+Meanwhile Brett  Cannon in [11] starts by taking us back to the origin and uses of ‘yield from’  in coroutines , is
+David Beazley the one that take us even further back and deeper , by starting for a diferentiation between generators ,
+an coroutines.</p>
+<p>David Beazley  make a distintion that generators and generators function should be differenciated from coroutines in both
+its intention and uses. We will see this distintion below</p>
+<div class="section" id="generator">
+<h3>Generator<a class="headerlink" href="#generator" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Generator functions allow you to declare a function that behaves like an iterator,
+i.e. it can be used in a for loop.</p>
+<p>For this you need to implement the __next__ and __iter__ methods</p>
+<p>Luciano Ramalho in [6] , Chapter 14 clearly defined iterable and iterator in Chapter 14. But beofre going there
+take note the name of that Chapter “Iterables, Iterator and Generators”. We will see why later</p>
+<p>iterable:</p>
+<p>Any object from which the iter built-in function can obtain an iterator. Objects implementing an __iter__ method
+returning an iterator are iterable.
+Sequences are always iterable; as are objects implementing a __getitem__ method that takes 0-based indexes.</p>
+<p>It’s important to be clear about the relationship between iterables and iterators:
+Python obtains iterators from iterables.</p>
+<p>In page 418 he stops to explain why Sequences are iterable and what teh interpreter oes when needs to
+iterate over an object</p>
+<p>Then in the same Chapter in page 423 he gives us a definition of iterator</p>
+<p>iterator:</p>
+<p>Any object that implements the __next__ no-argument method that returns the next item in a series
+or raises StopIteration when there are no more items. Python iterators also implement the __iter__ method
+so they are iterable as well.</p>
+<p>Now let see an example and carefully look that we have not used the keyword yield so far for anything:</p>
+</div></blockquote>
+</div>
+<div class="section" id="generator-functions-yield-appears">
+<h3>Generator Functions ( yield appears)<a class="headerlink" href="#generator-functions-yield-appears" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Python provides generator functions as a convenient shortcut to building iterators.
+For this Python uses yield</p>
+<p>Simple generator function countdown.py , taken from  David Beazley… [9]</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#countdown.py</span>
+<span class="c1"># A simple generator function</span>
+
+<span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="nb">print</span> <span class="s2">&quot;Counting down from&quot;</span><span class="p">,</span> <span class="n">n</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">n</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="nb">print</span> <span class="s2">&quot;Done counting down&quot;</span>
+
+<span class="c1"># Example use</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">countdown</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="n">i</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note the use of the yield to the left of the value. So yield is pausing execution of the countdown() function</p>
+</div>
+<p>and returning back  to the caller both the n value and the control.</p>
+<p>But ….</p>
+<p>But people knew that if we took the “pausing” part of generators and added in a “send stuff
+back in” aspect to them, Python would suddenly have the concept of coroutines in Python ..Brett [11]</p>
+<p>When a generator yields , it keep sits state
+So far we have seen generators being able to send values back to the caller.
+It will change soon and we will see that they will be able to accept values from the caller</p>
+</div></blockquote>
+</div>
+<div class="section" id="coroutines-and-its-importance-in-async-operations">
+<h3>Coroutines and its importance in async operations<a class="headerlink" href="#coroutines-and-its-importance-in-async-operations" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Coroutines are just special generators …. You sent values into</p>
+<p>Coroutines are very similar to generators in Python: they both use yield.
+Just the meaning of yield implies to let things go.To stop and let other continuous. So yield keyword
+has an asynchronous meaning. Brett [8] .
+Coroutines suspend execution in the yield statement and pass control to the caller
+along with any value to the right of yield.
+Normal coroutines in python use yield to wait to receive an elements from the caller. Usually yield is to the right
+The caller send data to the coroutine using send.
+Coroutines are functions whose execution you can pause.</p>
+<p>In  [6] , Chapter 16 Page 480, Luciano Ramalho  explains to us  ” How Coroutines evolved form Generators” :
+On PEP 342 and PEP 380 , Luciano continues in [6],  .send() , throw() and .close() methods were added that
+allowed a caller to send() a datum into the generator , thrown and exception to be handle inside the generator,
+and terminate it.</p>
+<p>PEP 380 , added yield from syntax. that allows a generator , continues Luciano [6] in the same page
+We can go deeper on the details of PEP 380, created by Gregory Ewing reading [16]</p>
+<blockquote>
+<div><p>We could see some examples of use of coroutines now , but what will be really useful is to see David Beazley examples
+in A Curious Course on Coroutines [9] …, Part 1 : Introduction to Generators and Coroutines</p>
+<p>Then looking at Chapter [2] on David Bealey [9] , example copipe.py we will see how how to hook up a pipeline with
+coroutines</p>
+<p>Now is time we can understand and see yield from in Action.</p>
+</div></blockquote>
+</div></blockquote>
+<div class="section" id="luciano-ramalho-fluent-python-page-496-example-16-17">
+<h4>Luciano Ramalho , Fluent Python,  Page [496]  Example 16-17<a class="headerlink" href="#luciano-ramalho-fluent-python-page-496-example-16-17" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">averager</span><span class="p">():</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">average</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="k">yield</span>
+        <span class="k">if</span> <span class="n">term</span> <span class="ow">is</span> <span class="kc">None</span> <span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">total</span> <span class="o">+</span> <span class="o">=</span> <span class="n">term</span>
+        <span class="n">count</span> <span class="o">+</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">average</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="n">count</span>
+        <span class="k">return</span> <span class="n">Result</span> <span class="p">(</span> <span class="n">count</span> <span class="p">,</span> <span class="n">average</span> <span class="p">)</span>
+
+ <span class="c1"># the delegating generator</span>
+ <span class="k">def</span> <span class="nf">grouper</span> <span class="p">(</span> <span class="n">results</span> <span class="p">,</span> <span class="n">key</span> <span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span> <span class="p">:</span>
+        <span class="n">results</span> <span class="p">[</span> <span class="n">key</span> <span class="p">]</span> <span class="o">=</span> <span class="k">yield from</span> <span class="n">averager</span> <span class="p">(</span> <span class="p">)</span>
+
+ <span class="c1"># the client code, a.k.a. the caller</span>
+
+ <span class="k">def</span> <span class="nf">main</span> <span class="p">(</span> <span class="n">data</span> <span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">{</span> <span class="p">}</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">data</span> <span class="o">.</span> <span class="n">items</span> <span class="p">(</span> <span class="p">):</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">grouper</span> <span class="p">(</span> <span class="n">results</span> <span class="p">,</span> <span class="n">key</span> <span class="p">)</span>
+    <span class="nb">next</span> <span class="p">(</span> <span class="n">group</span> <span class="p">)</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+        <span class="n">group</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># important!</span>
+
+    <span class="c1"># print(results) # uncomment to debug</span>
+    <span class="n">report</span> <span class="p">(</span> <span class="n">results</span> <span class="p">)</span>
+
+    <span class="c1"># output report</span>
+    <span class="k">def</span> <span class="nf">report</span> <span class="p">(</span> <span class="n">results</span> <span class="p">):</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="nb">sorted</span> <span class="p">(</span> <span class="n">results</span> <span class="o">.</span> <span class="n">items</span> <span class="p">(</span> <span class="p">)</span> <span class="p">):</span>
+            <span class="n">group</span> <span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">key</span> <span class="o">.</span> <span class="n">split</span> <span class="p">(</span> <span class="s1">&#39; ; &#39;</span> <span class="p">)</span>
+            <span class="nb">print</span> <span class="p">(</span> <span class="s1">&#39; </span><span class="si">{:2}</span><span class="s1"> </span><span class="si">{:5}</span><span class="s1"> averaging </span><span class="si">{:.2f}{}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                      <span class="n">result</span><span class="o">.</span><span class="n">count</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">average</span><span class="p">,</span> <span class="n">unit</span><span class="p">))</span>
+
+ <span class="n">data</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39; girls;kg &#39;</span><span class="p">:</span>
+                <span class="p">[</span> <span class="mf">40.9</span> <span class="p">,</span> <span class="mf">38.5</span> <span class="p">,</span> <span class="mf">44.3</span> <span class="p">,</span> <span class="mf">42.2</span> <span class="p">,</span> <span class="mf">45.2</span> <span class="p">,</span> <span class="mf">41.7</span> <span class="p">,</span> <span class="mf">44.5</span> <span class="p">,</span> <span class="mf">38.0</span> <span class="p">,</span> <span class="mf">40.6</span> <span class="p">,</span> <span class="mf">44.5</span> <span class="p">]</span> <span class="p">,</span>
+          <span class="s1">&#39; girls;m &#39;</span><span class="p">:</span>
+                <span class="p">[</span> <span class="mf">1.6</span> <span class="p">,</span> <span class="mf">1.51</span> <span class="p">,</span> <span class="mf">1.4</span> <span class="p">,</span> <span class="mf">1.3</span> <span class="p">,</span> <span class="mf">1.41</span> <span class="p">,</span> <span class="mf">1.39</span> <span class="p">,</span> <span class="mf">1.33</span> <span class="p">,</span> <span class="mf">1.46</span> <span class="p">,</span> <span class="mf">1.45</span> <span class="p">,</span> <span class="mf">1.43</span> <span class="p">]</span> <span class="p">,</span>
+           <span class="s1">&#39; boys;kg &#39;</span><span class="p">:</span>
+                 <span class="p">[</span> <span class="mf">39.0</span> <span class="p">,</span> <span class="mf">40.8</span> <span class="p">,</span> <span class="mf">43.2</span> <span class="p">,</span> <span class="mf">40.8</span> <span class="p">,</span> <span class="mf">43.1</span> <span class="p">,</span> <span class="mf">38.6</span> <span class="p">,</span> <span class="mf">41.4</span> <span class="p">,</span> <span class="mf">40.6</span> <span class="p">,</span> <span class="mf">36.3</span> <span class="p">]</span> <span class="p">,</span>
+           <span class="s1">&#39; boys;m &#39;</span><span class="p">:</span>
+                 <span class="p">[</span> <span class="mf">1.38</span> <span class="p">,</span> <span class="mf">1.5</span> <span class="p">,</span> <span class="mf">1.32</span> <span class="p">,</span> <span class="mf">1.25</span> <span class="p">,</span> <span class="mf">1.37</span> <span class="p">,</span> <span class="mf">1.48</span> <span class="p">,</span> <span class="mf">1.25</span> <span class="p">,</span> <span class="mf">1.49</span> <span class="p">,</span> <span class="mf">1.46</span> <span class="p">]</span> <span class="p">,</span> <span class="p">}</span>
+
+ <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39; __main__ &#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>We can easily see now the power of “yield from” and how this keywords will allow us to extract values and send
+values directly to the subgenerator, which yield data back at the caller.</p>
+</div>
+</div>
+<div class="section" id="interlude-generators-are-not-coroutines">
+<h3>Interlude : Generators are not Coroutines<a class="headerlink" href="#interlude-generators-are-not-coroutines" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>….(David Beazley minute 30:42 of Curious Course on Coroutines and Concurrency[9]</p>
+</div></blockquote>
+<p>Coroutines evolved from generators.From coroutines a new syntax gave birth to async and await keywords
+and that is the reason we have take a look to all that here so far.</p>
+<p>But as David Beezley quoted in above reference, generators are not coroutines.
+Below Table show the differences.</p>
+<blockquote>
+<div><table class="colwidths-given docutils align-default" id="id8">
+<caption><span class="caption-text">Table 2 Differences between GENERATORS and COROUTINES</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>GENERATORS</p></th>
+<th class="head"><p>COROUTINES</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Produce data</p></td>
+<td><p>Consume data</p></td>
+</tr>
+<tr class="row-odd"><td><p>Related to iteration</p></td>
+<td><p>Nothing to do with iteration,even when producing values and Related to async behavior</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">PyMiami</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, David Gutierrez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
