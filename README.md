@@ -3,7 +3,7 @@
 ### Created by David Gutierrez for PyMiami.
 
 
-   <p align="left">
+   <p>
       Twitter @Py_Miami <a href="https://twitter.com/Py_Miami">
       <img src="Twitter_Logo_Blue.png" width="50" height="50" title="Twitter Logo" alt="Twitter Logo">
       </a>
