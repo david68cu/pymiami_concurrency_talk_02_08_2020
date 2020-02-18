@@ -1,12 +1,12 @@
-# PyMiami Concurrency Talk
+# Concurrency in Python
 
-##   Created by David Gutierrez for PyMiami
+### Created by David Gutierrez for PyMiami.
 
    Join our Twitter group at : https://twitter.com/Py_Miami
    Join our Facebook group at : https://www.facebook.com/groups/pymiami/
    <p align="center">
-      <img src="Twitter_Logo_Blue.png" width="350" title="Twitter Logo" alt="Twitter Logo">
-      <a href="https://twitter.com/Py_Miami"> @Py_Miami</a>
+      <img src="Twitter_Logo_Blue.png" width="10" title="Twitter Logo" alt="Twitter Logo">
+      <a href="https://twitter.com/Py_Miami">Join us at Twitter @Py_Miami</a>
   </p>
   
    PyMiami 
