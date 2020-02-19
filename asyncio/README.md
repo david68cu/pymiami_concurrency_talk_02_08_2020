@@ -41,6 +41,7 @@ This generates a conf.py file and html docs
 
 
 Workflow:
+
     - Inside the source folder we have the index.srt that we will edit 
     - We will make html to make the new html file with the changes by 
            cd /docs
@@ -49,6 +50,10 @@ Workflow:
     - To see changes in browser  open  docs/build/html/index.html 
 
 
+Changing theme in Sphinx:
+
+   - You tube video  [Changing theme in Sphinx](https://www.youtube.com/watch?v=Zb_Oy5UG6Tw)
+   - GitHub Sphinx themes and How To install  [GitHun Sphinx Themes](https://github.com/rtfd/sphinx_rtd_theme)
 
 
 
