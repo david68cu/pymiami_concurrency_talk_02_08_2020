@@ -5,8 +5,9 @@ Second Part: Python Async I/O
 =============================
 
 
-Created by David Gutierrez for PyMiami
-PyMiami and FIU School of Engineering and Computers hold this FREE events monthly.
+ Created by David Gutierrez for PyMiami.
+
+ FIU School of Engineering and Computers hold this FREE events monthly.
 
 Contact Information
 ^^^^^^^^^^^^^^^^^^^
