@@ -5,46 +5,45 @@ Second Part: Python Async I/O
 =============================
 
 
- Created by David Gutierrez for PyMiami.
+     Created by David Gutierrez for PyMiami.
 
- FIU School of Engineering and Computers hold this FREE events monthly.
+     FIU School of Engineering and Computers hold this FREE events monthly.
 
 Contact Information
 ^^^^^^^^^^^^^^^^^^^
 
 
-David Gutierrez.
-email: david @ pymiami . org
+    David Gutierrez.
+    email: david @ pymiami . org
 
-Joint our group social accounts to keep updated about upcoming events:
+    Joint our group social accounts to keep updated about upcoming events:
 
-    `Twitter <https://twitter.com/Py_Miami>`_
+        `Twitter <https://twitter.com/Py_Miami>`_
 
-    `Facebook <https://www.facebook.com/PythonDevelopersMiami/>`_
+        `Facebook <https://www.facebook.com/PythonDevelopersMiami/>`_
 
-Do you need help or training?
- Contact us at david @ pythonsoftware.solutions
+    Do you need help or training?
+     Contact us at david @ pythonsoftware.solutions
 
 Important Note
---------------
+^^^^^^^^^^^^^^
 
+    All content in this tutorial has been taken from the references named below. What I have done is looking for some of the best
+    , relevant information and  organize it in a way that better help understands the subject .
+    I find this much better than re-create a content , and also because the creators are extremely skilled and experienced
+    personalities ,and as such are  much more capable and has much more knowledge than I have.
 
-All content in this tutorial has been taken from the references named below. What I have done is looking for some of the best
-, relevant information and  organize it in a way that better help understands the subject .
-I find this much better than re-create a content , and also because the creators are extremely skilled and experienced
-personalities ,and as such are  much more capable and has much more knowledge than I have.
+    This course is also a way of recognition to the creators of the content and their live long effort and their
+    contribution to Python.
 
-This course is also a way of recognition to the creators of the content and their live long effort and their
-contribution to Python.
+    Take a time to follow them in their Social media Links below , and check their companies , courses ,
+    training and what they do. You will benefit immensely.
 
-Take a time to follow them in their Social media Links below , and check their companies , courses ,
-training and what they do. You will benefit immensely.
-
-I will take the freedom to start by mention all the references,  and documentation used in this Tutorial.
+    I will take the freedom to start by mention all the references,  and documentation used in this Tutorial.
 
 
 References
-----------
+^^^^^^^^^^
 
      - 1- Yury Selivanov,  `Async await and asyncio in Python 3.6 and beyond PyCon 2017. <https://www.youtube.com/watch?v=2ZFFv-wZ8_g>`_
      - 2- Miguel Grinberg,  `Asynchronous Python for the Complete Beginner PyCon 2017. <https://www.youtube.com/watch?v=iG6fr81xHKA>`_
@@ -58,6 +57,7 @@ References
      - 10- Łukasz Langa, `Thinking In Coroutines - PyCon 2016, <https://www.youtube.com/watch?v=l4Nn-y9ktd4>`_
      - 11- Brett Cannon, `How the heck does async/await work in Python 3.5?, <https://snarky.ca/how-the-heck-does-async-await-work-in-python-3-5/>`_
      - 12- Raymond Hettinger, `Keynote on Concurrency, PyBay 2017 <https://www.youtube.com/watch?v=9zinZmE3Ogk&t=55s>`_
+     - 13 -Doug Hellman, `The Python 3 Standard Library by Example <https://www.amazon.com/Python-Standard-Library-Example-Developers-ebook/dp/B072QZZDV7>`_
 
 
 Documents and Papers
@@ -74,41 +74,39 @@ Documents and Papers
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Contents:
 
 
 At the beginning there were threads..
 ======================================
 
-In the first talk , "Talk #1 - Concurrency with Threads and Futures , Feb 8th 2020.",
-We discussed the evolution of concurrency in Python.
+    In the first talk , "Talk #1 - Concurrency with Threads and Futures , Feb 8th 2020.",
+    We discussed the evolution of concurrency in Python.
 
-We started by analyzing chapter 17,  and first part of chapter 18 of Luciano Ramalho book  "Fluent Python" [6]
-In chapter 17 "Concurrency and Features" , Luciano starts by explaining a sequential download . It is of course necessary
-we can see a sequential example and how we could later improve it using concurrency.
+    We started by analyzing chapter 17,  and first part of chapter 18 of Luciano Ramalho book  "Fluent Python" [6]
+    In chapter 17 "Concurrency and Features" , Luciano starts by explaining a sequential download . It is of course necessary
+    we can see a sequential example and how we could later improve it using concurrency.
 
-Luciano starts  Chapter 18  with an example of Threads, and later move us to coroutines and finally async I/O.
+    Luciano starts  Chapter 18  with an example of Threads, and later move us to coroutines and finally async I/O.
 
-We discussed chapter 17 and used the treads example in Chapter 18  to learn about Threads and Futures
+    We discussed chapter 17 and used the treads example in Chapter 18  to learn about Threads and Futures
 
-To learn about Threads we fully discussed Raymond Hettinger talk, "Keynote on Concurrency, PyBay 2017" , where we
-learned the complexity and perils that lure on the Threads world
+    To learn about Threads we fully discussed Raymond Hettinger talk, "Keynote on Concurrency, PyBay 2017" , where we
+    learned the complexity and perils that lure on the Threads world
 
-Finally we were able to  arrive to below evolutionary conclusion in Table 1.
+    Finally we were able to  arrive to below evolutionary conclusion in Table 1.
 
-If you want to know more about this , we encourage you to search our talk or the resources mentioned.
+    If you want to know more about this , we encourage you to search our talk or the resources mentioned.
 
 
   CONCURRENCY IN PYTHON : "Dealing with lots of things at once"
   [6] Chapter 18th
 
 .. csv-table:: Table 1
-   :file: TAble1.csv
-   :widths: 33, 33, 33
+   :file: Table1.csv
+   :widths: 24, 24, 24
    :header-rows: 1
-
-
 
 
 And here we are one month later to learn about async I/O , far away from the thread and blocked world we discussed
@@ -120,42 +118,42 @@ But then, we wonder  what is Async I/O and what Python have to do with this.?
 ...And then we were given a breath of life Async I/O
 =====================================================
 
-What is async I/O ?
+    What is async I/O ?
 
-As per Wikipedia " In computer science, asynchronous I/O (also non-sequential I/O) is a form of input/output
-processing that permits other processing to continue before the transmission has finished.
+    As per Wikipedia  "In computer science, asynchronous I/O (also non-sequential I/O) is a form of input/output
+    processing that permits other processing to continue before the transmission has finished".
 
-David Beazley, `Python Brasil 2015 keynote...[8] , starts by recounting that Async I/O was implemented by C# a
-long time ago . Łukasz Langa, `Thinking In Coroutines - PyCon 2016 [6] states that those who knows JavaScript/ NodeJS
-async I/O should easily get the concept in Python.
+    David Beazley, "Python Brasil 2015 keynote..." [8] , starts by recounting that Async I/O was implemented by C# a
+    long time ago . Łukasz Langa, "Thinking In Coroutines - PyCon 2016" [6] states that those who knows JavaScript/ NodeJS
+    async I/O should easily get the concept in Python.
 
-So Async I/O is not a Python concept and indeed has been implemented in other languages a long time ago
+    So Async I/O is not a Python concept and indeed has been implemented in other languages a long time ago
 
-Async I/O gives us the possibility of writing  concurrent programs , without using Threads. Threads belong to the OS
-and as such are more expensive and less scalable than async I/O cooperative multitasking . So just using one thread ,
-the main thread,  we are able to gain multiprocessing capability.
+    Async I/O gives us the possibility of writing  concurrent programs , without using Threads. Threads belong to the OS
+    and as such are more expensive and less scalable than async I/O cooperative multitasking . So just using one thread ,
+    the main thread,  we are able to gain multiprocessing capability.
 
-Before going any step further , this is the moment to take a look at Miguel Grinberg,  `Asynchronous Python for the
-Complete Beginner talk [2] where in just a few minutes , Miguel quickly describe the universe of async programing.
-
-
-But then we want the details , the how this was possible, and indeed understand how async I/O works ?
+    Before going any step further , this is the moment to take a look at Miguel Grinberg,  Asynchronous Python for the
+    Complete Beginner talk [2] where in just a few minutes , Miguel quickly describe the universe of async programing.
 
 
-How the heck does async/await work in Python [11]
--------------------------------------------------
+    But then we want the details , the how this was possible, and indeed understand how async I/O works ?
 
-When you feel afraid of not knowing enough about async I/O , it will be a relief to know that Brett  Cannon asked himself
-the above question in  [11]. Once you know who he is you will feel and immediate peace of mind , on having
-some doubts ( or maybe many ?) about async I/O. He had too at some time!!
 
-David Beazley in [8] and [9], clearly describe the evolution of async I/O.
-Meanwhile Brett  Cannon in [11] starts by taking us back to the origin and uses of 'yield from'  in coroutines , is
-David Beazley the one that takes us even further back and deeper , by starting for a differentiation between generators ,
-an coroutines.
+How the heck does async/await work in Python ? Brett  Cannon [11]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-David Beazley  make a distinction that generators and generators function should be differentiated from coroutines in both
-its intention and uses. We will see this distinction below.
+    When you feel afraid of not knowing enough about async I/O , it will be a relief to know that Brett  Cannon asked himself
+    the above question in  [11]. Once you know who he is you will feel and immediate peace of mind , on having
+    some doubts ( or maybe many ?) about async I/O. He had too at some time!!
+
+    David Beazley in [8] and [9], clearly describe the evolution of async I/O.
+    Meanwhile Brett  Cannon in [11] starts by taking us back to the origin and uses of 'yield from'  in coroutines , is
+    David Beazley the one that takes us even further back and deeper , by starting for a differentiation between generators ,
+    an coroutines.
+
+    David Beazley  make a distinction that generators and generators function should be differentiated from coroutines in both
+    its intention and uses. We will see this distinction below.
 
 
 Iterables and Iterator and Generator Function
@@ -225,11 +223,12 @@ Generator Functions ( yield appears)
 
     .. note::
         Note the use of the yield to the left of the value. So yield is pausing execution of the countdown() function
-    and returning back  to the caller both the n value and the control.
+        and returning back  to the caller both the n value and the control.
 
-    A Python function that has the yield keyword in its body is a generator function.
-   When this function is called it return a generator object. In other words a generator function is a generator factory
-   ... pag 428 [6]
+
+   A Python function that has the yield keyword in its body is a generator function.
+   When this function is called it return a generator object. In other words a generator function is a generator
+   factory, Luciano pag 428 [6]
 
     And that is all about Generators , Iterator and Iterables.
 
@@ -273,8 +272,9 @@ Coroutines and its importance in async operations
 
      Now is time we can understand and see yield from in Action.
 
-Luciano Ramalho , Fluent Python,  Page [496]  Example 16-17
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Example 16-17, "Fluent Python", Luciano Ramalho   Page [496]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
     .. code-block:: python
@@ -331,19 +331,20 @@ Luciano Ramalho , Fluent Python,  Page [496]  Example 16-17
              if __name__ == ' __main__ ':
                 main(data)
 
-We can easily see now the power of "yield from" and how this keywords will allow us to extract values and send
-values directly to the subgenerator, which yield data back at the caller.
+    We can easily see now the power of "yield from" and how this keywords will allow us to extract values and send
+    values directly to the subgenerator, which yield data back at the caller.
 
 
 Interlude : Generators are not Coroutines
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-                  ....(David Beazley minute 30:42 of Curious Course on Coroutines and Concurrency[9]
 
-Coroutines evolved from generators.From coroutines a new syntax gave birth to async and await keywords
-and that is the reason we have take a look to all that here so far.
+    David Beazley minute 30:42 of Curious Course on Coroutines and Concurrency [9]
 
-But as David Beezley quoted in above reference, generators are not coroutines.
-Below Table show the differences.
+    Coroutines evolved from generators.From coroutines a new syntax gave birth to async and await keywords
+    and that is the reason we have taken a look to all that here so far.
+
+    But as David Beazley quoted in above references [9], generators are not coroutines.
+    Below Table show the differences.
 
     .. list-table:: Table 2 Differences between GENERATORS and COROUTINES
        :widths: 35 65
@@ -356,9 +357,47 @@ Below Table show the differences.
        * - Related to iteration
          - Nothing to do with iteration,even when producing values and Related to async behavior
 
-Indices and tables
-==================
+Event Loops and async/ await:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+Doug Hellman in his mater book "The Python 3 Standard Library by Example"  (Developer's Library) 1st Edition
+chapter 10.5 explains to us what an Event Loop is
+
+
+Async I/O in Python:
+^^^^^^^^^^^^^^^^^^^^
+
+Before trying to understand anything else  we need to go to David Beazley's curio GitHub implementation here
+`<https://github.com/dabeaz/curio>`_.
+No worries , we are not going to try to understand it. But  we will read something really interesting :
+
+ "Curio - There Are Many Async Libraries, But This One is Mine"
+
+Now you need to go to Brett Cannon essay in [7].
+and before going any read this twice:
+
+
+[7]....In that talk, David pointed out that async/await is really an API for asynchronous programming
+(which he reiterated to me on Twitter). What David means by this is that people shouldn't think that async/await
+as synonymous with asyncio, but instead think that asyncio is a framework that can utilize the async/await
+API for asynchronous programming.
+
+David Beazley actually believes this idea of async/await being an asynchronous programming API that he has created
+the curio project to implement his own event loop. This has helped make it clear to me that async/await allows
+Python to provide the building blocks for asynchronous programming, but without tying you to a specific event
+loop or other low-level details (unlike other programming languages which integrate the event loop into the
+language directly). This allows for projects like curio to not only operate differently at a lower level
+(e.g., asyncio uses future objects as the API for talking to its event loop while curio uses tuples), but to also
+have different focuses and performance characteristics (e.g., asyncio has an entire framework for implementing
+transport and protocol layers which makes it extensible while curio is simpler and expects the user to worry
+about that kind of thing but also allows it to run faster).
+
+
+So at this point we should be clear of the following:
+
+- What is Async I/O ? (read above we discussed this concept before)
+- What is an Event Loop ? (read above we discussed this concept before)
+- asyncio is a framework that can utilize the async/await API for asynchronous programming.
+- async/await is an  asynchronous programming API
+- async/await allows Python to provide the building blocks for asynchronous programming
+-
