@@ -95,10 +95,11 @@
 <li><a class="reference internal" href="#iterables-and-iterator-and-generator-function">Iterables and Iterator and Generator Function</a></li>
 <li><a class="reference internal" href="#generator-functions-yield-appears">Generator Functions ( yield appears)</a></li>
 <li><a class="reference internal" href="#coroutines-and-its-importance-in-async-operations">Coroutines and its importance in async operations</a></li>
-<li><a class="reference internal" href="#example-16-17-fluent-python-luciano-ramalho-page-496">Example 16-17, “Fluent Python”, Luciano Ramalho   Page [496]</a></li>
 <li><a class="reference internal" href="#interlude-generators-are-not-coroutines">Interlude : Generators are not Coroutines</a></li>
-<li><a class="reference internal" href="#event-loops-and-async-await">Event Loops and async/ await:</a></li>
-<li><a class="reference internal" href="#async-i-o-in-python">Async I/O in Python:</a></li>
+<li><a class="reference internal" href="#event-loops">Event Loops :</a></li>
+<li><a class="reference internal" href="#his-name-is-yuri-selivanov-or-async-await-to-take-us-outside-of-the-chaos">His name is Yuri Selivanov, or,  “async / await to take us outside of the chaos”</a></li>
+<li><a class="reference internal" href="#so-at-the-end-what-we-need-to-know-so-far">So at the end, what we need to know so far</a></li>
+<li><a class="reference internal" href="#andrew-svetlov-aiohttp">Andrew Svetlov : aiohttp</a></li>
 </ul>
 </li>
 </ul>
@@ -221,6 +222,7 @@ training and what they do. You will benefit immensely.</p>
 <li><p>11- Brett Cannon, <a class="reference external" href="https://snarky.ca/how-the-heck-does-async-await-work-in-python-3-5/">How the heck does async/await work in Python 3.5?,</a></p></li>
 <li><p>12- Raymond Hettinger, <a class="reference external" href="https://www.youtube.com/watch?v=9zinZmE3Ogk&amp;t=55s">Keynote on Concurrency, PyBay 2017</a></p></li>
 <li><p>13 -Doug Hellman, <a class="reference external" href="https://www.amazon.com/Python-Standard-Library-Example-Developers-ebook/dp/B072QZZDV7">The Python 3 Standard Library by Example</a></p></li>
+<li><p>14 -Dusty Phillips, <a class="reference external" href="https://www.packtpub.com/application-development/python-3-object-oriented-programming-third-edition">Python 3 Object-Oriented Programming 3rd Edition</a>.</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -373,27 +375,35 @@ For this Python uses yield</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Note the use of the yield to the left of the value. So yield is pausing execution of the countdown() function
-and returning back  to the caller both the n value and the control.</p>
+and returning back  to the caller both:  the n value and the control. It is important to see that the state of
+the countdown function , remains the same , so when the caller return control to the generator , the function
+continuos execution after the yield n statement !!</p>
 </div>
 </div></blockquote>
 <p>A Python function that has the yield keyword in its body is a generator function.
 When this function is called it return a generator object. In other words a generator function is a generator
 factory, Luciano pag 428 [6]</p>
-<blockquote>
-<div><p>And that is all about Generators , Iterator and Iterables.</p>
 <p>But ….</p>
 <p>But people knew that if we took the “pausing” part of generators and added in a “send stuff
 back in” aspect to them, Python would suddenly have the concept of coroutines in Python ..Brett [11]</p>
 <p>When a generator yields , it keep sits state
 So far we have seen generators being able to send values back to the caller.
-It will change soon and we will see that they will be able to accept values from the caller</p>
-</div></blockquote>
+It will change soon and we will see that they will be able to accept values from the caller.</p>
 </div></blockquote>
 </div>
 <div class="section" id="coroutines-and-its-importance-in-async-operations">
 <h2>Coroutines and its importance in async operations<a class="headerlink" href="#coroutines-and-its-importance-in-async-operations" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Coroutines are just special generators …. You sent values into</p>
+<div><ul>
+<li><p>The origins of the yield from keyword</p>
+<blockquote>
+<div><p>In  [6] , Chapter 16 Page 480, Luciano Ramalho  explains to us  ” How Coroutines evolved form Generators” :
+On PEP 342 and PEP 380 , Luciano continues in [6],  .send() , throw() and .close() methods were added that
+allowed a caller to send() a datum into the generator , thrown and exception to be handle inside the generator,
+and terminate it.</p>
+<p>PEP 380 , added yield from syntax. that allows a generator , continues Luciano  in [6] in the same page 480.
+We can go deeper on the details of PEP 380, created by Gregory Ewing reading [16]</p>
+<p>Coroutines are just special generators …. You sent values into</p>
 <p>Coroutines are very similar to generators in Python: they both use yield.
 Just the meaning of yield implies to let things go.To stop and let other continuous. So yield keyword
 has an asynchronous meaning. Brett [8] .
@@ -402,25 +412,27 @@ along with any value to the right of yield.
 Normal coroutines in python use yield to wait to receive an elements from the caller. Usually yield is to the right
 The caller send data to the coroutine using send.
 Coroutines are functions whose execution you can pause.</p>
-<p>In  [6] , Chapter 16 Page 480, Luciano Ramalho  explains to us  ” How Coroutines evolved form Generators” :
-On PEP 342 and PEP 380 , Luciano continues in [6],  .send() , throw() and .close() methods were added that
-allowed a caller to send() a datum into the generator , thrown and exception to be handle inside the generator,
-and terminate it.</p>
-<p>PEP 380 , added yield from syntax. that allows a generator , continues Luciano [6] in the same page
-We can go deeper on the details of PEP 380, created by Gregory Ewing reading [16]</p>
 <blockquote>
 <div><p>We could see some examples of use of coroutines now , but what will be really useful is to see David Beazley examples
 in A Curious Course on Coroutines [9] …, Part 1 : Introduction to Generators and Coroutines</p>
-<p>Then looking at Chapter [2] on David Bealey [9] , example copipe.py we will see how how to hook up a pipeline with
-coroutines</p>
-<p>Now is time we can understand and see yield from in Action.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="example-16-17-fluent-python-luciano-ramalho-page-496">
-<h2>Example 16-17, “Fluent Python”, Luciano Ramalho   Page [496]<a class="headerlink" href="#example-16-17-fluent-python-luciano-ramalho-page-496" title="Permalink to this headline">¶</a></h2>
+</li>
+</ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">averager</span><span class="p">():</span>
+<div><p>Then looking at Chapter [2] on David Bealey [9] , example copipe.py we will see how how to hook up a pipeline with
+coroutines.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that stacking coroutines , meaning having one coroutine doing something passing the result of its operation
+to another coroutine so it does another things, with that kind of structure , we could get pretty powerful
+functionality. “yield from” will allow us to successfully concatenate coroutines and get messages passed back and
+forth from the caller to any coroutine in the pipe.</p>
+</div>
+<p>Now is time we can understand and see “yield from” in Action , but taken a look to [6] Example 16-17, “Fluent Python”,
+Luciano Ramalho Page [496]</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">averager</span><span class="p">():</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">average</span> <span class="o">=</span> <span class="kc">None</span>
@@ -504,23 +516,351 @@ Below Table show the differences.</p>
 </tr>
 </tbody>
 </table>
+<p>Python’s coroutines, are special functions that give up control to the caller without losing their state [13]
+They allow to return information from a pipe of multiple coroutines using yield from
+They consume data and evolved from generators</p>
 </div></blockquote>
+<p>Hellmann, Doug. The Python 3 Standard Library by Example (Developer’s Library) . Pearson Education. Kindle Edition.</p>
 </div>
-<div class="section" id="event-loops-and-async-await">
-<h2>Event Loops and async/ await:<a class="headerlink" href="#event-loops-and-async-await" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="event-loops">
+<h2>Event Loops :<a class="headerlink" href="#event-loops" title="Permalink to this headline">¶</a></h2>
 <p>Doug Hellman in his mater book “The Python 3 Standard Library by Example”  (Developer’s Library) 1st Edition
-chapter 10.5 explains to us what an Event Loop is</p>
+chapter 10.5 explains to us what an Event Loop is:</p>
+<p>“Event loop, a first-class object that is responsible for efficiently handling I/O events, system events,
+and application context changes. Several loop implementations are provided, to take advantage of the
+operating systems’ capabilities efficiently. While a reasonable default is usually selected automatically,
+it is also possible to pick a particular event loop implementation from within the application”. [13]</p>
+<p>Python documentation describes the event loop as follow:
+“Event loops run asynchronous tasks and callbacks, perform network IO operations, and run subprocesses”. [14]</p>
+<p>“In computer science, the event loop is a programming construct or design pattern that waits for and dispatches
+events or messages in a program. The event loop works by making a request to some internal or external
+“event provider” (that generally blocks the request until an event has arrived),
+then calls the relevant event handler (“dispatches the event”).</p>
+<p>The event loop is also sometimes referred to as the message dispatcher, message loop, message pump, or run loop.”</p>
+<p>MDN gives us the following definition of JavaScript event loop:</p>
+<p>“JavaScript has a concurrency model based on an event loop,
+which is responsible for executing the code, collecting and processing events,
+and executing queued sub-tasks. “</p>
+<p>In any case an event loop is as its name says , is a loop. In Python we can implement loops with something so
+simple as a while statement !!. Also we can do it using a context Manager, etc.</p>
+<p>In brief the Event Loop is an important part of any Async I/O architecture, and in Python this is also the case.</p>
+<p>Specifically the asyncio module , one of many async i/o implementations in Python , create the event loop in the
+BaseDefaultEventLoopPolicy. This event loop runs in its own thread and what we expect from it
+( efficiency, simplicity and responsability in task delegation ) we get it</p>
+<p>See below some lines of the source code for the method get_event_loop()</p>
+<p><a class="reference external" href="https://github.com/python/cpython/blob/9ce361d3bb15cf49b82fa03e3e593d7cbd8ee1ff/Lib/asyncio/events.py#L205">BaseDefaultEventLoop</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BaseDefaultEventLoopPolicy</span><span class="p">(</span><span class="n">AbstractEventLoopPolicy</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Default policy implementation for accessing the event loop.</span>
+<span class="sd">    In this policy, each thread has its own event loop.  However, we</span>
+<span class="sd">    only automatically create an event loop by default for the main</span>
+<span class="sd">    thread; other threads by default have no event loop.</span>
+<span class="sd">    Other policies may have different rules (e.g. a single global</span>
+<span class="sd">    event loop, or automatically creating an event loop per thread, or</span>
+<span class="sd">    using some other notion of context to which an event loop is</span>
+<span class="sd">    associated).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_loop_factory</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">class</span> <span class="nc">_Local</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">local</span><span class="p">):</span>
+        <span class="n">_loop</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">_set_called</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_local</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Local</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">get_event_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the event loop for the current context.</span>
+<span class="sd">        Returns an instance of EventLoop or raises an exception.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">_loop</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+                <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">_set_called</span> <span class="ow">and</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">current_thread</span><span class="p">(),</span> <span class="n">threading</span><span class="o">.</span><span class="n">_MainThread</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_event_loop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">new_event_loop</span><span class="p">())</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">_loop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;There is no current event loop in thread </span><span class="si">%r</span><span class="s1">.&#39;</span>
+                               <span class="o">%</span> <span class="n">threading</span><span class="o">.</span><span class="n">current_thread</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">_loop</span>
+</pre></div>
 </div>
-<div class="section" id="async-i-o-in-python">
-<h2>Async I/O in Python:<a class="headerlink" href="#async-i-o-in-python" title="Permalink to this headline">¶</a></h2>
-<p>Before trying to understand anything else  we need to go to David Beazley’s curio GitHub implementation here
-<a class="reference external" href="https://github.com/dabeaz/curio">https://github.com/dabeaz/curio</a>.
+<p>By the other hands David Beazley curio library use as event loop an Object he called the Kernel.
+We ask the Kernel to run and pass as a parameter to it  a coroutine.
+One more time the Kernel ( Event Loop) has only limited coordination and functionality and is build on top of simple
+data structures, threads.Event object (real threads) etc</p>
+<p><a class="reference external" href="https://github.com/dabeaz/curio/blob/master/curio/kernel.py">The curio Event Loop (Kernel) run function</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">corofunc</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">with_monitor</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">selector</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">debug</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">activations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kernel_extra</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Run the curio kernel with an initial task and execute until all</span>
+<span class="sd">    tasks terminate.  Returns the task&#39;s final result (if any). This</span>
+<span class="sd">    is a convenience function that should primarily be used for</span>
+<span class="sd">    launching the top-level task of a curio-based application.  It</span>
+<span class="sd">    creates an entirely new kernel, runs the given task to completion,</span>
+<span class="sd">    and concludes by shutting down the kernel, releasing all resources used.</span>
+
+<span class="sd">    Don&#39;t use this function if you&#39;re repeatedly launching a lot of</span>
+<span class="sd">    new tasks to run in curio. Instead, create a Kernel instance and</span>
+<span class="sd">    use its run() method instead.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">kernel</span> <span class="o">=</span> <span class="n">Kernel</span><span class="p">(</span><span class="n">selector</span><span class="o">=</span><span class="n">selector</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">activations</span><span class="o">=</span><span class="n">activations</span><span class="p">,</span>
+                    <span class="o">**</span><span class="n">kernel_extra</span><span class="p">)</span>
+
+    <span class="c1"># Check if a monitor has been requested</span>
+    <span class="k">if</span> <span class="n">with_monitor</span> <span class="ow">or</span> <span class="s1">&#39;CURIOMONITOR&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">.monitor</span> <span class="kn">import</span> <span class="n">Monitor</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">(</span><span class="n">kernel</span><span class="p">)</span>
+        <span class="n">kernel</span><span class="o">.</span><span class="n">_call_at_shutdown</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">close</span><span class="p">)</span>
+        <span class="n">kernel</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">kernel</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">kernel</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">corofunc</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ok so we have mentioned 3 Event loops two in Python and one in javascript
+the asyncio event loop is able to run asynchornous code ( threads , futures) as well as async i/o not blocking code</p>
+<p>This is taken from the Python documentation</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">concurrent.futures</span>
+
+<span class="k">def</span> <span class="nf">blocking_io</span><span class="p">():</span>
+    <span class="c1"># File operations (such as logging) can block the</span>
+    <span class="c1"># event loop: run them in a thread pool.</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/dev/urandom&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">cpu_bound</span><span class="p">():</span>
+    <span class="c1"># CPU-bound operations will block the event loop:</span>
+    <span class="c1"># in general it is preferable to run them in a</span>
+    <span class="c1"># process pool.</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span> <span class="o">**</span> <span class="mi">7</span><span class="p">))</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+
+    <span class="c1">## Options:</span>
+
+    <span class="c1"># 1. Run in the default loop&#39;s executor:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_in_executor</span><span class="p">(</span>
+        <span class="kc">None</span><span class="p">,</span> <span class="n">blocking_io</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;default thread pool&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+    <span class="c1"># 2. Run in a custom thread pool:</span>
+    <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_in_executor</span><span class="p">(</span>
+            <span class="n">pool</span><span class="p">,</span> <span class="n">blocking_io</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;custom thread pool&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+    <span class="c1"># 3. Run in a custom process pool:</span>
+    <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ProcessPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_in_executor</span><span class="p">(</span>
+            <span class="n">pool</span><span class="p">,</span> <span class="n">cpu_bound</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;custom process pool&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>As we can see we use the asyncio Event Loop was used to run  Process and Threads!!</p>
+<p>So lets see some more examples of Even Loops ,</p>
+<p>From Python asyncio docs :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">(</span><span class="n">loop</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A callback to print &#39;Hello World&#39; and stop the event loop&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">)</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+
+<span class="c1"># Schedule a call to hello_world()</span>
+<span class="n">loop</span><span class="o">.</span><span class="n">call_soon</span><span class="p">(</span><span class="n">hello_world</span><span class="p">,</span> <span class="n">loop</span><span class="p">)</span>
+
+<span class="c1"># Blocking call interrupted by loop.stop()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">run_forever</span><span class="p">()</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This is still another simple example</p>
+</div>
+<div class="section" id="his-name-is-yuri-selivanov-or-async-await-to-take-us-outside-of-the-chaos">
+<h2>His name is Yuri Selivanov, or,  “async / await to take us outside of the chaos”<a class="headerlink" href="#his-name-is-yuri-selivanov-or-async-await-to-take-us-outside-of-the-chaos" title="Permalink to this headline">¶</a></h2>
+<p>PEP 492 [13]  was introduced by Yuri Selivanov. to save us the rest of the mortals from the confusions and darkness.
+You can see also Yuri Selivanov in our first reference here.
+Go and take a look at Python PEP and search async and its authors. You will find its name close to multiples PEP</p>
+<p>In the abstract we can read</p>
+<p>” …[PEP 492] It is proposed to make coroutines a proper standalone concept in Python, and introduce new supporting syntax.
+The ultimate goal is to help establish a common, easily approachable, mental model of asynchronous
+programming in Python and make it as close to synchronous programming as possible.</p>
+<p>This PEP assumes that the asynchronous tasks are scheduled and coordinated by an Event Loop similar
+to that of stdlib module asyncio.events.AbstractEventLoop. While the PEP is not tied to any specific Event Loop
+implementation, it is relevant only to the kind of coroutine that uses yield as a signal to the scheduler,
+indicating that the coroutine will be waiting until an event (such as IO) is completed.”</p>
+<p>In brief : async await is a new syntax created in Python to work with coroutines, just to make it clear it is a coroutine
+( and as we already know reinforce the idea of asymmetric behavior) , and not a generator.</p>
+<p>Dusty Phillips, in [14] (p. 295) note:</p>
+<p>There is an alternate syntax for coroutines using the async and await keywords. The syntax makes it clearer that
+the code is a coroutine and further breaks the deceiving symmetry between coroutines and generators.
+The syntax doesn’t work very well without building a full event loop …</p>
+<p>So in the new world of async, and in the newest version of Python  , coroutines reinforce the sense of
+asynchronous behavior by using:</p>
+<ul class="simple">
+<li><p>async –&gt; instead of –&gt; “yield”</p></li>
+<li><p>await –&gt; instead of –&gt; “yield from” ( This transfer control back to the caller, in asyncio world ,the Event Loop)</p></li>
+<li><p>“async def” is now used to declare a native coroutine</p></li>
+<li><p>“asyn def” functions are always coroutines, even without await expressions</p></li>
+<li><p>coroutine object is the object returned when we call a coroutine(like generator objects are returned from generators)</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">echo_server</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Serving on localhost:8000&#39;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">start_server</span><span class="p">(</span><span class="n">handle_connection</span><span class="p">,</span>
+                               <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">8000</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">handle_connection</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="n">writer</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;New connection...&#39;</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">8192</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sending </span><span class="si">{:.10}</span><span class="s1">... back&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+<span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">echo_server</span><span class="p">())</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">run_forever</span><span class="p">()</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Above is the example given in the PEP 492.</p>
+<p>Now let’s see and discuss some more example. Luciano in [6] , Exercise 18=2, takes the time of creating teh same
+script using asyncio , and curio .</p>
+<p>It is in the GitHub project of the book not in the book itself</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="c1"># spinner_curio.py</span>
+
+<span class="c1"># credits: Example by Luciano Ramalho inspired by</span>
+<span class="c1"># Michele Simionato&#39;s multiprocessing example in the python-list:</span>
+<span class="c1"># https://mail.python.org/pipermail/python-list/2009-February/538048.html</span>
+<span class="kn">import</span> <span class="nn">curio</span>
+
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">spin</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>  <span class="c1"># &lt;1&gt;</span>
+    <span class="n">write</span><span class="p">,</span> <span class="n">flush</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">cycle</span><span class="p">(</span><span class="s1">&#39;|/-</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">):</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">char</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">msg</span>
+        <span class="n">write</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+        <span class="n">flush</span><span class="p">()</span>
+        <span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x08</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">status</span><span class="p">))</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">curio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># &lt;2&gt;</span>
+        <span class="k">except</span> <span class="n">curio</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">:</span>  <span class="c1"># &lt;3&gt;</span>
+            <span class="k">break</span>
+    <span class="n">write</span><span class="p">(</span><span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">status</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\x08</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">status</span><span class="p">))</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">slow_function</span><span class="p">():</span>  <span class="c1"># &lt;4&gt;</span>
+    <span class="c1"># pretend waiting a long time for I/O</span>
+    <span class="k">await</span> <span class="n">curio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># &lt;5&gt;</span>
+    <span class="k">return</span> <span class="mi">42</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">supervisor</span><span class="p">():</span>  <span class="c1"># &lt;6&gt;</span>
+    <span class="n">spinner</span> <span class="o">=</span> <span class="k">await</span> <span class="n">curio</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">spin</span><span class="p">(</span><span class="s1">&#39;thinking!&#39;</span><span class="p">))</span>  <span class="c1"># &lt;7&gt;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;spinner object:</span><span class="se">\n</span><span class="s1"> &#39;</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">spinner</span><span class="p">))</span>  <span class="c1"># &lt;8&gt;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">slow_function</span><span class="p">()</span>  <span class="c1"># &lt;9&gt;</span>
+    <span class="k">await</span> <span class="n">spinner</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>  <span class="c1"># &lt;10&gt;</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">curio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">supervisor</span><span class="p">)</span>  <span class="c1"># &lt;12&gt;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Answer:&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>and now the same example using asyncio with await and the new coroutine definitions asyn def</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="c1"># spinner_await.py</span>
+
+<span class="c1"># credits: Example by Luciano Ramalho inspired by</span>
+<span class="c1"># Michele Simionato&#39;s multiprocessing example in the python-list:</span>
+<span class="c1"># https://mail.python.org/pipermail/python-list/2009-February/538048.html</span>
+
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">spin</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>  <span class="c1"># &lt;1&gt;</span>
+    <span class="n">write</span><span class="p">,</span> <span class="n">flush</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">cycle</span><span class="p">(</span><span class="s1">&#39;|/-</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">):</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">char</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">msg</span>
+        <span class="n">write</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+        <span class="n">flush</span><span class="p">()</span>
+        <span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x08</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">status</span><span class="p">))</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># &lt;2&gt;</span>
+        <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">:</span>  <span class="c1"># &lt;3&gt;</span>
+            <span class="k">break</span>
+    <span class="n">write</span><span class="p">(</span><span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">status</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\x08</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">status</span><span class="p">))</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">slow_function</span><span class="p">():</span>  <span class="c1"># &lt;4&gt;</span>
+    <span class="c1"># pretend waiting a long time for I/O</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># &lt;5&gt;</span>
+    <span class="k">return</span> <span class="mi">42</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">supervisor</span><span class="p">():</span>  <span class="c1"># &lt;6&gt;</span>
+    <span class="n">spinner</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">ensure_future</span><span class="p">(</span><span class="n">spin</span><span class="p">(</span><span class="s1">&#39;thinking!&#39;</span><span class="p">))</span>  <span class="c1"># &lt;7&gt;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;spinner object:&#39;</span><span class="p">,</span> <span class="n">spinner</span><span class="p">)</span>  <span class="c1"># &lt;8&gt;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">slow_function</span><span class="p">()</span>  <span class="c1"># &lt;9&gt;</span>
+    <span class="n">spinner</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>  <span class="c1"># &lt;10&gt;</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>  <span class="c1"># &lt;11&gt;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">supervisor</span><span class="p">())</span>  <span class="c1"># &lt;12&gt;</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Answer:&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We can see that both library make use of async / await syntax and each one implement the same functionality ,
+an Async I/O execution one using curio and anotehr using asyncio</p>
+</div>
+<div class="section" id="so-at-the-end-what-we-need-to-know-so-far">
+<h2>So at the end, what we need to know so far<a class="headerlink" href="#so-at-the-end-what-we-need-to-know-so-far" title="Permalink to this headline">¶</a></h2>
+<p>Before trying to understand anything else  we need to go to David Beazley’s curio GitHub implementation
+<a class="reference external" href="https://github.com/dabeaz/curio">here</a>.
 No worries , we are not going to try to understand it. But  we will read something really interesting :</p>
 <blockquote>
 <div><p>“Curio - There Are Many Async Libraries, But This One is Mine”</p>
 </div></blockquote>
-<p>Now you need to go to Brett Cannon essay in [7].
-and before going any read this twice:</p>
+<p>Unfortunately on Thursday 20th, 2020  at around 7:00pm ET, just a few days after I had writen this part of the conference,
+David Beazley changed the message  of curio to Curio - “It’s the Sauce!”</p>
+<p>Now you need to go to Brett Cannon essay in [7]. and  ,read this twice:</p>
 <p>[7]….In that talk, David pointed out that async/await is really an API for asynchronous programming
 (which he reiterated to me on Twitter). What David means by this is that people shouldn’t think that async/await
 as synonymous with asyncio, but instead think that asyncio is a framework that can utilize the async/await
@@ -533,16 +873,50 @@ language directly). This allows for projects like curio to not only operate diff
 (e.g., asyncio uses future objects as the API for talking to its event loop while curio uses tuples), but to also
 have different focuses and performance characteristics (e.g., asyncio has an entire framework for implementing
 transport and protocol layers which makes it extensible while curio is simpler and expects the user to worry
-about that kind of thing but also allows it to run faster).</p>
+about that kind of thing but also allows it to run faster).”</p>
 <p>So at this point we should be clear of the following:</p>
-<ul class="simple">
+<blockquote>
+<div><ul class="simple">
 <li><p>What is Async I/O ? (read above we discussed this concept before)</p></li>
 <li><p>What is an Event Loop ? (read above we discussed this concept before)</p></li>
 <li><p>asyncio is a framework that can utilize the async/await API for asynchronous programming.</p></li>
 <li><p>async/await is an  asynchronous programming API</p></li>
 <li><p>async/await allows Python to provide the building blocks for asynchronous programming</p></li>
-<li></li>
 </ul>
+</div></blockquote>
+<p>Python async I/O ecosystem as off February 2020</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Coroutines with async and await syntax</p></li>
+<li><p>Asynchronous Generators</p></li>
+<li><p>Asynchronous Comprehensions</p></li>
+<li><p>Asynchronous IO Support Rebooted: the “asyncio” Module</p></li>
+<li><p>Asynchronous I/O For subprocess.Popen</p></li>
+<li><p>third party libraries : Twisted ,  gevent</p></li>
+<li><p>curio</p></li>
+<li><p>trio</p></li>
+<li><p>aiohttp</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="andrew-svetlov-aiohttp">
+<h2>Andrew Svetlov : aiohttp<a class="headerlink" href="#andrew-svetlov-aiohttp" title="Permalink to this headline">¶</a></h2>
+<p>In order to use asyncio, we must use libraries that are not blocking
+It means that those libraries or frameworks, need in turn to use asyncio’s implementation of all I/O functions !!!
+So let say we want to use asyncio to get a web site , we just can not do</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">asyn</span> <span class="k">def</span> <span class="nf">fetch</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="o">....</span>
+    <span class="k">await</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="o">....</span>
+</pre></div>
+</div>
+<p>The reason for this is that requests is not awaitable .Requests comes from the another universe, the universe
+of blocking and uses sockets() that is blocking by nature, and as such we can not use it. So then what we are going to
+do.</p>
+<p>Fortunately Andrew Svetlov created aiohttp and we can use it for cases like this.
+Andrew Svetlov and Mariatta Wijaya, in [4] and [5], provided us with some examples we will use here</p>
 </div>
 </div>
 
