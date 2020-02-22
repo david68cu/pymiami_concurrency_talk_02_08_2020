@@ -828,10 +828,12 @@ So let say we want to use asyncio to get a web site. It should be easy with what
     if __name__ == '__main__':
         main()
 
-OUTPUT:
-File "../asyncio/intro_aiohttp_handson_mariatta_pycon2019/3.1_wrong_asyncio_requests.py", line 7, in fetch
-    await requests.get(url)
-    TypeError: object Response can't be used in 'await' expression
+.. code-block::
+
+    # OUTPUT
+    >>File "../asyncio/intro_aiohttp_handson_mariatta_pycon2019/3.1_wrong_asyncio_requests.py", line 7, in fetch
+    >>await requests.get(url)
+    >>TypeError: object Response can't be used in 'await' expression
 
 So what happened here ?
 
@@ -874,13 +876,14 @@ So let's try to solve the issue using the second technique :
         loop.close()
 
 I can see the stupor in your face.
-Did not you show me you were to take me to a new universe away from Threads and Process , and OS limitation
+
+Did not you say you were to take me to a new universe away from Threads and Process , and OS limitations
 to an  unblocked world of cooperative multitasking ?
-Did not you showed me what the Gods and Prophets, listed in that immense   Reference above  have  said ?
-How is that you are talking one more time about Threads and asyncio all mixed up toguether ?
+Did not you show me what the Gods and Prophets, listed in that immense   Reference above  have  said ?
+How is that you are talking about Threads and asyncio all mixed up together ?
+
+Our friend requests (for humans)  can not be used any longer in this new universe without pain.
+And meanwhile we await for a new and  awaitable requests for humans, we have now aiohttp.
 
 Fortunately Andrew Svetlov created aiohttp and we can use it for cases like this.
-Our friend requests can not be used any longer
 Andrew Svetlov and Mariatta Wijaya, in [4] and [5], provided us with some examples we will use here
-
-This is the fist solution we listed aboved :
