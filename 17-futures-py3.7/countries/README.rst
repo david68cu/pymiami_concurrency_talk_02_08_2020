@@ -3,7 +3,7 @@ Setting up Nginx and Vaurien
 ============================
 
 This text explains how to configure Nginx and Vaurien to test HTTP client code while avoiding network traffic and introducing simulated delays and errors.
-This setup is necessary if you want to experiment with the ``flags2*.py`` image download examples in this directory -- covered in chapters 17 and 18 of Fluent Python.
+This setup is necessary if you want to experiment with the ``flags2*.py`` image download examples in this directory -- covered in Chapters 17 and 18 of Fluent Python.
 
 
 Overview
