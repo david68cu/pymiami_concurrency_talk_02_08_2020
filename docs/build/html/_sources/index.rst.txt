@@ -60,9 +60,12 @@ Indices and tables
    * :ref:`ref_8_event_loops`
    * :ref:`ref_9_yuri`
    * :ref:`ref_10_what_we_know_so_far`
-   * :ref:`ref_10_aiohttp_andrew-mariatta`
+      * :ref:`ref_10.1_python_asyncio_ecosystem`
+   * :ref:`ref_11_aiohttp_andrew-mariatta`
 
 * :ref:`ref_11_farewall_david_gutierrez`
+
+
 
 
 

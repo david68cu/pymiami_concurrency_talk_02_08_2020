@@ -1,4 +1,4 @@
-.. _ref_10_aiohttp_andrew-mariatta:
+.. _ref_11_aiohttp_andrew-mariatta:
 
 Andrew Svetlov:  aiohttp
 ^^^^^^^^^^^^^^^^^^^^^^^^

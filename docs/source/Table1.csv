@@ -1,4 +1,4 @@
 ﻿Python,Python 3.2/ 2011  ,Python 3.4/2014           Created by Guido
 ,current.futures ThreadpoolExecutor Context Manager,asyncio
-"Threads, Locks,Semaphore,Event,Timer,Queue","Threads, Locks,Semaphore,Event,Timer,Queue","Coroutines, AsyncIO not blocking loops, cal backs"
+"Threads, Locks,Semaphore,Event,Timer,Queue","Threads, Locks,Semaphore,Event,Timer,Queue","Coroutines, AsyncIO not blocking loops, call backs"
 Multi Thread Processing,Multi Thread Processing,Single Thread Processing
