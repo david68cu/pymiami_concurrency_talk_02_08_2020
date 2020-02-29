@@ -18,27 +18,15 @@ FAREWALL
 
         `LinkedIn Python Software Solutions <https://www.linkedin.com/company/pythonsoftware-solutions>`_
 
-|    Do you need help creating your  Python applications?
 
+|    Do you need help creating your  Python applications?
 |    Do you need training?
 
 |    Contact me at david @ pythonsoftware.solutions
 
 Finally, join the social accounts of the authors named in the references.
 
-
-
-
-
-Join our PyMiami Python Developers group’s social accounts to stay updated about upcoming events:
-Twitter
-
-Facebook
-
-Do you need help creating your Python applications?
-Do you need training?
-Contact me at david @ pythonsoftware.solutions
-
+Thanks !!
 David Gutierrez
 
 
