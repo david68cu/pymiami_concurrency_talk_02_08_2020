@@ -3,7 +3,7 @@
 Important Note
 ^^^^^^^^^^^^^^
 
-All content in this tutorial has been taken from the references named below. What I have done is
+All content in this tutorial has been taken from the references named in the "References" section. What I have done is
 looked for some of the best, most relevant information and organized it in a way that better helps
 understands the subject.
 
