@@ -22,9 +22,11 @@ Second Part: Python Async I/O
     :glob:
     :hidden:
 
+    preface.rst
     contact_info.rst
     important_note.rst
     references.rst
+    part1_a_quick_review.rst
     1_content_begining.rst
     2_content_asyncio_intro.rst
     3_content_how_async_io_works.rst
@@ -32,15 +34,18 @@ Second Part: Python Async I/O
     5_content_generator_functions.rst
     6_content_coroutines.rst
     7_interlude_generators_coroutine.rst
+    part2_asyncio.rst
     8_content_event_loop.rst
     9_content_yuri.rst
     10_what_we_know_so_far.rst
+    10_1_python_asyncio_ecosystem.rst
     11_aiohttp_andrew_marietta.rst
     12_david_gutierrez_farwell.rst
 
 Indices and tables
 ==================
 |
+
 * :ref:`ref_preface`
    * :ref:`ref_contact_info`
    * :ref:`ref_important_note`
@@ -56,7 +61,6 @@ Indices and tables
 
 
 * :ref:`ref_part_2_async_io`
-   * :ref:`ref_7_interlude_generators`
    * :ref:`ref_8_event_loops`
    * :ref:`ref_9_yuri`
    * :ref:`ref_10_what_we_know_so_far`

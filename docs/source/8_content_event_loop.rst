@@ -1,8 +1,8 @@
 
 .. _ref_8_event_loops:
 
-Event Loops :
-^^^^^^^^^^^^^
+Event Loops
+^^^^^^^^^^^
 
 Doug Hellman in his mater book "The Python 3 Standard Library by Example"  (Developer's Library) 1st Edition
 Chapter 10.5 explains to us what an Event Loop is:
