@@ -4,7 +4,7 @@
 Python growing async I/O ecosystem
 ==================================
 
-Python async I/O ecosystem as off February 2020
+Here below we show some of the most used async I/O libraries  and Python modules.
 
     * Coroutines with async and await syntax
     * Asynchronous Generators
@@ -12,8 +12,11 @@ Python async I/O ecosystem as off February 2020
     * Asynchronous IO Support Rebooted: the "asyncio" Module
     * Asynchronous I/O For subprocess.Popen
 
-    * third party libraries : Twisted ,  gevent
+    * third party libraries
+    * twisted
+    * gevent
     * curio
     * trio
     * aiohttp
     * aiosmtplib
+
