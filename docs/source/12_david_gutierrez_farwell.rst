@@ -4,15 +4,19 @@
 FAREWALL
 ========
 
-Thank you for reading  and I hope  this has been useful.
+| Thank you for reading  and I hope  this has been useful.
 
-If you think this could be improved some way, please email me at david @ pymiami . org
+| If you think this document  could be improved some way, please email me at david @ pymiami . org
 
 |    Join  our PyMiami Python Developers group's social accounts to stay updated about upcoming events:
 
-        `Twitter <https://twitter.com/Py_Miami>`_
+        `Twitter PyMiami <https://twitter.com/Py_Miami>`_
 
-        `Facebook <https://www.facebook.com/PythonDevelopersMiami/>`_
+        `LinkedIn PyMiami <https://www.linkedin.com/groups/13625642/>`_
+
+        `Facebook PyMiami <https://www.facebook.com/PythonDevelopersMiami/>`_
+
+        `LinkedIn Python Software Solutions <https://www.linkedin.com/company/pythonsoftware-solutions>`_
 
 |    Do you need help creating your  Python applications?
 
