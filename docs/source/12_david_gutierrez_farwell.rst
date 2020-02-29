@@ -24,9 +24,9 @@ FAREWALL
 
 |    Contact me at david @ pythonsoftware.solutions
 
-Finally, join the social accounts of the authors named in the references.
+|Finally, join the social accounts of the authors named in the references.
 
-Thanks !!
-David Gutierrez
+|Thanks !!
+|David Gutierrez
 
 
