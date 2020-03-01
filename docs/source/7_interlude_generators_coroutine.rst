@@ -23,9 +23,8 @@ Interlude : Generators are not Coroutines
        * - Related to iteration
          - Nothing to do with iteration,even when producing values and Related to async behavior
 
-    Python’s coroutines, are special functions that give up control to the caller without losing their state [13]
-    They allow to return information from a pipe of multiple coroutines using yield from
-    They consume data and evolved from generators
+|    Python’s coroutines, are special functions that give up control to the caller without losing their state, Dough Hellman [13]
+|    They allow to return information from a pipe of multiple coroutines using yield from
+|    They consume data and evolved from generators
 
 
-Hellmann, Doug. The Python 3 Standard Library by Example (Developer's Library) . Pearson Education. Kindle Edition.

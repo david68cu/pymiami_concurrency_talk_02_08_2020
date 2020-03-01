@@ -52,6 +52,7 @@ Indices and tables
    * :ref:`ref_references`
 
 * :ref:`ref_part_1_before_starting`
+   * :ref:`ref_1_content_begining`
    * :ref:`ref_2_content_asyncio_intro`
    * :ref:`ref_3_how_async_io_works`
    * :ref:`ref_4_how_async_io_works`
