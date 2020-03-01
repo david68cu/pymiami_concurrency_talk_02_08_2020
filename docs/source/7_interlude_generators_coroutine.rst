@@ -10,7 +10,8 @@ Interlude : Generators are not Coroutines
     and that is the reason we have taken a look to all that here so far.
 
     But as David Beazley quoted in above references [9], generators are not coroutines.
-    Below Table show the differences.
+
+|    Below Table show the differences.
 
     .. list-table:: Table 2 Differences between GENERATORS and COROUTINES
        :widths: 35 65
