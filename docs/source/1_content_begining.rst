@@ -8,8 +8,8 @@ At the beginning there were threads..
     of concurrency in Python.
 
     We started by analyzing Chapter 17, and the first part of Chapter 18 of Luciano Ramalho's book
-    “Fluent Python” [6] In Chapter 17 “Concurrency and Features”, Luciano starts by explaining a sequential download.
-    It is, of course, necessary we can see a sequential example and how we could later improve it using concurrency.
+    “Fluent Python” [6]. In Chapter 17 “Concurrency and Features”, Luciano starts by explaining a sequential download.
+    It is, of course, necessary that we see a sequential example and how we could later improve it using concurrency.
 
     Luciano starts Chapter 18 with an example of Threads, and later move us to coroutines and finally async I/O.
     We discussed Chapter 17 and used the treads example in Chapter 18 to learn about Threads and Futures.
@@ -28,4 +28,4 @@ At the beginning there were threads..
 We are here, one month later ,  to talk about async I/O, far away from the thread and blocked world we discussed
 in February, entering into a new universe of cooperation multitasking and event loops.
 
-But then, we wonder what is Async I/O and what Python has to do with this.?
+But then, we wonder, what is Async I/O and what does Python have to do with it?
