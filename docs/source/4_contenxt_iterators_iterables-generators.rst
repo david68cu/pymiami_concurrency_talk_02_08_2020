@@ -33,6 +33,6 @@ Iterables and Iterator and Generator Function
     or raises StopIteration when there are no more items. Python iterators also implement the __iter__ method
     so they are iterable as well.
 
-    Now,let's see an example and carefully look that we have not used the keyword "yield" so far for anything.
+    Now,let's see an example and take note that the keyword "yield" has not been used for anything so far.
     Remember the title of the Chapter does not mention coroutines : "Iterables, Iterator and Generators".
 

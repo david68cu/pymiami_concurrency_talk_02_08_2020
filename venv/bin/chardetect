@@ -1,10 +1,8 @@
-#!/Users/davidgutierrez/Documents/PythonStuffOthers/PyMiami_Presentation_Repos/Concurrency_Python/venv/bin/python
+#!/Users/jonathan/PycharmProjects/pymiami_concurrency_talk_02_08_2020/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
-
 from chardet.cli.chardetect import main
-
 if __name__ == '__main__':
-    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
     sys.exit(main())

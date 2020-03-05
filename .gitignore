@@ -130,3 +130,5 @@ dmypy.json
 # Sphinx
 docs/build/environment.pickle
 docs/build/index.doctree
+docs/.DS_Store
+docs/build/html/searchindex.js

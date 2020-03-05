@@ -20,7 +20,7 @@
     the main thread,  we are able to gain multiprocessing capability.
 
     Before going any step further ,take a moment to look at Miguel Grinberg's,  Asynchronous Python for the
-    Complete Beginner talk [2] where, in just a few minutes, Miguel quickly described the universe of async programing.
+    Complete Beginner talk [2] where, in just a few minutes, Miguel quickly describes the universe of async programing.
 
-    But then we want the details, the "how was this possible", and indeed understand how async I/O works ?
+    But then we want the details, the "how was this possible?", and the desire to understand how async I/O works ?
 

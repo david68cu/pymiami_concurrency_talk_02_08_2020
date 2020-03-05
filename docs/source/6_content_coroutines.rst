@@ -7,17 +7,17 @@ Coroutines and its importance in async operations
     * The origins of the yield from keyword
 
         In  [6] , Chapter 16 Page 480, Luciano Ramalho  explains to us  " How Coroutines evolved form Generators" :
-        On PEP 342 and PEP 380 , Luciano continues in [6],  .send() , throw() and .close() methods were added that
-        allowed a caller to send() a datum into the generator , thrown and exception to be handle inside the generator,
+        On PEP 342 and PEP 380 , Luciano continues on [6],  .send() , throw() and .close() methods were added that
+        allowed a caller to send() a datum into the generator , thrown and exception to be handled inside the generator,
         and terminate it.
 
         PEP 380 , added yield from syntax. that allows a generator , continues Luciano  in [6] in the same page 480.
         We can go deeper on the details of PEP 380, created by Gregory Ewing reading [16]
 
-        Coroutines are just special generators .... You sent values into
+        Coroutines are just special generators .... You send values into
 
         Coroutines are very similar to generators in Python: they both use yield.
-        Just the meaning of yield implies to let things go.To stop and let other continuous. So yield keyword
+        Just the meaning of yield implies to 'let things go', to stop and let others continue. So, the yield keyword
         has an asynchronous meaning. Brett [8] .
         Coroutines suspend execution in the yield statement and pass control to the caller
         along with any value to the right of yield.

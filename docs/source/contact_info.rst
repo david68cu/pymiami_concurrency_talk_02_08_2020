@@ -13,7 +13,7 @@ Contact Information
 
         `Facebook <https://www.facebook.com/PythonDevelopersMiami/>`_
 
-|    Do you need help creating your  Python applications?
+|    Do you need help creating your Python applications?
 
 |    Do you need training?
 
