@@ -37,6 +37,9 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
+# Pycharm
+.idea
+
 # Unit test / coverage reports
 htmlcov/
 .tox/
@@ -123,3 +126,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Sphinx
+docs/build/environment.pickle
+docs/build/index.doctree
+docs/.DS_Store
+docs/build/html/searchindex.js
