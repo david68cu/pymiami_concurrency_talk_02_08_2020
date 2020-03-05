@@ -130,4 +130,8 @@ dmypy.json
 # Sphinx
 docs/build/environment.pickle
 docs/build/index.doctree
+<<<<<<< HEAD
+=======
+docs/.DS_Store
+>>>>>>> b71cd0afa145badb19da9af86e7b983cfa5699b0
 docs/build/html/searchindex.js
