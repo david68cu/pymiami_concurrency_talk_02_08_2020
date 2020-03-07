@@ -4,9 +4,9 @@
 His name is Yuri Selivanov, or,  "async / await to take us outside of the chaos"
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-PEP 492 [13]  was introduced by Yuri Selivanov. to save us the rest of the mortals from the confusions and darkness.
+PEP 492 [13]  was introduced by Yuri Selivanov, to save us, the rest of the mortals,  from the confusions and darkness.
 You can see also Yuri Selivanov in our first reference here.
-Go and take a look at Python PEP and search async and its authors. You will find its name close to multiples PEP
+Go and take a look at Python PEP and search async and its authors. You will find his name close to multiples PEP
 
 In the abstract we can read
 
@@ -67,11 +67,8 @@ asynchronous behavior by using:
 
 Above is the example given in the PEP 492.
 
-Now let's see and discuss some more example. Luciano in [6] , Exercise 18=2, takes the time of creating teh same
-script using asyncio , and curio .
-
-
-It is in the GitHub project of the book not in the book itself
+Now let's see and discuss other examples. Luciano in [6] , Exercise 18.2, created the same
+script using asyncio , and curio . (It is in the GitHub project of the book not in the book itself)
 
 
 .. code-block:: python
@@ -125,7 +122,7 @@ It is in the GitHub project of the book not in the book itself
     if __name__ == '__main__':
         main()
 
-and now the same example using asyncio with await and the new coroutine definitions asyn def
+and now the same example using asyncio with "await" and the new coroutine definitions "async def"
 
 .. code-block:: python
 
@@ -181,6 +178,6 @@ and now the same example using asyncio with await and the new coroutine definiti
         main()
 
 
-We can see that both library make use of async / await syntax and each one implement the same functionality ,
-an Async I/O execution one using curio and anotehr using asyncio
+We can see that both libraries  make use of async / await syntax and each one implement the same functionality ,
+an Async I/O execution the former using curio the latter using asyncio
 
