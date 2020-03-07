@@ -11,7 +11,7 @@ Interlude : Generators are not Coroutines
 
     But as David Beazley quoted in above references [9], generators are not coroutines.
 
-|    Below Table show the differences.
+|    Below Table shows the differences.
 
     .. list-table:: Table 2 Differences between GENERATORS and COROUTINES
        :widths: 35 65
@@ -25,7 +25,7 @@ Interlude : Generators are not Coroutines
          - Nothing to do with iteration,even when producing values and Related to async behavior
 
 |    Python’s coroutines, are special functions that give up control to the caller without losing their state, Dough Hellman [13]
-|    They allow to return information from a pipe of multiple coroutines using yield from
+|    They allow to return information from a pipe of multiple coroutines using "yield from"
 |    They consume data and evolved from generators
 
 
