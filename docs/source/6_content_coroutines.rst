@@ -6,29 +6,40 @@ Coroutines and its importance in async operations
 
     * The origins of the yield from keyword
 
-        In  [6] , Chapter 16 Page 480, Luciano Ramalho  explains to us  " How Coroutines evolved form Generators" :
-        On PEP 342 and PEP 380 , Luciano continues on [6],  .send() , throw() and .close() methods were added that
-        allowed a caller to send() a datum into the generator , thrown and exception to be handled inside the generator,
-        and terminate it.
+        In  [6] , Chapter 16 Page 480, Luciano Ramalho  explains to us  " How Coroutines evolved form Generators"
+        from that Lecture we learn that :
 
-        PEP 380 , added yield from syntax. that allows a generator , continues Luciano  in [6] in the same page 480.
+        ..In addition to  .send(..), PEP 340 also added  throw(..) and .close() methods that allowed a caller to send a datum
+        into the generator, thrown and exception to be handled inside the generator, and terminate it.
+
+        PEP 380 , makes two syntax changes to generators functions to make them more useful coroutines:
+
+        - "yield from"  syntax enables complex generators to be refactored into smaller nested  generators .
+        - A generator can now return a value. (previously attempts to return a value would raise a SyntaxError exception)
+          See   "return Result ( count , average )" in the example below
+
         We can go deeper on the details of PEP 380, created by Gregory Ewing reading [16]
 
-        Coroutines are just special generators .... You send values into
 
-        Coroutines are very similar to generators in Python: they both use yield.
-        Just the meaning of yield implies to 'let things go', to stop and let others continue. So, the yield keyword
-        has an asynchronous meaning. Brett [8] .
-        Coroutines suspend execution in the yield statement and pass control to the caller
-        along with any value to the right of yield.
-        Normal coroutines in python use yield to wait to receive an elements from the caller. Usually yield is to the right
-        The caller send data to the coroutine using send.
-        Coroutines are functions whose execution you can pause.
+        - Coroutines are just special generators .... You send values into
 
-         We could see some examples of use of coroutines now , but what will be really useful is to see David Beazley examples
-         in A Curious Course on Coroutines [9] ..., Part 1 : Introduction to Generators and Coroutines
+        - Coroutines are very similar to generators in Python: they both use yield.
+        - Just the meaning of yield implies to 'let things go', to stop and let others continue. So, the yield keyword
+            has an asynchronous meaning. Brett [8] .
+        - Coroutines suspend execution in the yield statement and pass control to the caller
+            along with any value to the right of yield.
+       -  Normal coroutines in python use yield to wait to receive an elements from the caller. Usually yield is to the right
+       - The caller send data to the coroutine using send.
+       - Coroutines are functions whose execution you can pause.
 
-     Then looking at Chapter [2] on David Bealey [9] , example copipe.py we will see how how to hook up a pipeline with
+        We could see some examples of use of coroutines now , but what will be really useful is to see David Beazley examples
+        in "A Curious Course on Coroutines" [9] ..., Part 1 : Introduction to Generators and Coroutines
+
+        We'll see in this talk  hwo we start separating coroutines from generators in its use and purpose, and how the former
+        "evolved" to create async/await syntax to be used in async I/O  operation in Python
+
+
+     Then looking at Chapter [2] on David Bealey [9] , and the code in "copipe.py" we will see how how to hook up a pipeline with
      coroutines.
 
      .. note::
@@ -38,7 +49,7 @@ Coroutines and its importance in async operations
          functionality. "yield from" will allow us to successfully concatenate coroutines and get messages passed back and
          forth from the caller to any coroutine in the pipe.
 
-     Now is time we can understand and see "yield from" in Action , but taken a look to [6] Example 16-17, "Fluent Python",
+     Now is time we can understand and see "yield from" in Action , by taken a look to [6] Example 16-17, "Fluent Python",
      Luciano Ramalho Page [496]
 
 
