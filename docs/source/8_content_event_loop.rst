@@ -4,8 +4,8 @@
 Event Loops
 ^^^^^^^^^^^
 
-Doug Hellman in his mater book "The Python 3 Standard Library by Example"  (Developer's Library) 1st Edition
-Chapter 10.5 describes what an Event Loop is:
+Doug Hellman in his mater book, "The Python 3 Standard Library by Example"  (Developer's Library) 1st Edition,
+Chapter 10.5, describes what an Event Loop is:
 
 "Event loop, a first-class object that is responsible for efficiently handling I/O events, system events,
 and application context changes. Several loop implementations are provided, to take advantage of the
@@ -82,8 +82,8 @@ See below some lines of the source code for the method get_event_loop() in the B
 
 
 
-David Beazley curio library uses  as event loop an Object he called the Kernel.
-We ask the Kernel to run and pass as a parameter to it,   a coroutine.
+David Beazley curio library uses an event loop object he called the Kernel.
+We ask the Kernel to run and pass as a parameter to it, a coroutine.
 One more time the Kernel ( Event Loop) has only limited coordination and functionality and is build on top of simple
 data structures, threads.Event object (real threads) etc
 
@@ -118,7 +118,7 @@ data structures, threads.Event object (real threads) etc
         with kernel:
             return kernel.run(corofunc, *args)
 
-Ok so we have mentioned 3 Event loops two in Python and one in javascript
+We have mentioned 3 Event loops two in Python and one in javascript
 the asyncio event loop is able to run asynchronous code ( threads , futures) as well as async i/o not blocking code
 
 This is taken from the Python documentation
@@ -166,7 +166,7 @@ This is taken from the Python documentation
 
 As we can see we use the asyncio Event Loop was used to run  Process and  Threads!!
 
-So lets see some more examples of Even Loops
+Lets see some more examples of Even Loops
 
 From Python asyncio docs :
 

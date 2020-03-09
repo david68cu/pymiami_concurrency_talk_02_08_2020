@@ -23,7 +23,7 @@ API for asynchronous programming.
 
 David Beazley actually believes this idea of async/await being an asynchronous programming API that he has created
 the curio project to implement his own event loop. This has helped make it clear to me that async/await allows
-Python to provide the building blocks for asynchronous programming, but without tying you to a specific event
+Python to provide the building blocks for asynchronous programming, but without tieing you to a specific event
 loop or other low-level details (unlike other programming languages which integrate the event loop into the
 language directly). This allows for projects like curio to not only operate differently at a lower level
 (e.g., asyncio uses future objects as the API for talking to its event loop while curio uses tuples), but to also

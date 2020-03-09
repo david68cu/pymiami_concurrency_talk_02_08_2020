@@ -6,15 +6,15 @@ Coroutines and its importance in async operations
 
     * The origins of the yield from keyword
 
-        In  [6] , Chapter 16 Page 480, Luciano Ramalho  explains to us  " How Coroutines evolved form Generators"
-        from that Lecture we learn that :
+        In  [6] , Chapter 16 Page 480, Luciano Ramalho writes "How Coroutines evolved form Generators"
+        from that Lecture we learn that:
 
         ..In addition to  .send(..), PEP 340 also added  throw(..) and .close() methods that allowed a caller to send a datum
-        into the generator, thrown and exception to be handled inside the generator, and terminate it.
+        into the generator, thrown an exception to be handled inside the generator, and terminate it.
 
         PEP 380 , makes two syntax changes to generators functions to make them more useful coroutines:
 
-        - "yield from"  syntax enables complex generators to be refactored into smaller nested  generators .
+        - "yield from"  syntax enables complex generators to be refactored into smaller nested generators .
         - A generator can now return a value. (previously attempts to return a value would raise a SyntaxError exception)
           See   "return Result ( count , average )" in the example below
 
@@ -35,7 +35,7 @@ Coroutines and its importance in async operations
         We could see some examples of use of coroutines now , but what will be really useful is to see David Beazley examples
         in "A Curious Course on Coroutines" [9] ..., Part 1 : Introduction to Generators and Coroutines
 
-        We'll see in this talk  hwo we start separating coroutines from generators in its use and purpose, and how the former
+        We'll see in this talk how we start separating coroutines from generators in its use and purpose, and how the former
         "evolved" to create async/await syntax to be used in async I/O  operation in Python
 
 
